@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs31620.quizapp
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class RecycleAdapter:RecyclerView.Adapter<RecycleAdapter.viewHolder>() {
-    private var titles = arrayOf("CS31310", "CS37410", "CS33410", "CS37410", "CS37410", "CS37410", "CS37410")
-    private var details = arrayOf("Item one details", "Item two details", "Item two details", "Item two details", "Item two details", "Item two details", "Item two details")
+    private var titles = arrayOf("CS31310", "CS31620", "CS36110", "CS37420", "CS38220", "CS39440")
+    private var details = arrayOf("Agile Development amd Testing", "Mobile Development with Android", "Fundamentals of Machine Learning", "E-Commerce: Implementation, Management and Security", "Professional Issues in the computer industry", "Major Project")
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleAdapter.viewHolder {
@@ -42,6 +43,8 @@ class RecycleAdapter:RecyclerView.Adapter<RecycleAdapter.viewHolder>() {
                 val position: Int = adapterPosition
 
                 Toast.makeText(itemView.context, "You clicked on ${titles[position]}", Toast.LENGTH_LONG).show()
+
+//                Intent intent = new Intent(itemView.context, )
             }
         }
     }
