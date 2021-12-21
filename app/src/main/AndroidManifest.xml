@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp">
         <activity
-            android:name=".teacher"
+            android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.Teacher"
+            android:label="Teacher"
             android:exported="false" />
         <activity
-            android:name=".student"
+            android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.Student"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

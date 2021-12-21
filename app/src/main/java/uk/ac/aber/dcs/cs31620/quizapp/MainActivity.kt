@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.*
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.student.Student
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.Teacher
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +18,6 @@ class MainActivity : AppCompatActivity() {
         studentButton();
         teacherButton();
 
-
-
-
 //        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navigation_teacher) as NavHostFragment
 //        val navController = navHostFragment.navController
 //        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_teacher))
@@ -31,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private fun studentButton() {
         val studentButton = findViewById<Button>(R.id.studentButton)
         studentButton.setOnClickListener {
-            val intent = Intent(this, student::class.java)
+            val intent = Intent(this, Student::class.java)
             startActivity(intent)
         }
     }
@@ -39,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     private fun teacherButton() {
         val teacherButton = findViewById<Button>(R.id.teacherButton)
         teacherButton.setOnClickListener {
-            val intent = Intent(this, teacher::class.java)
+            val intent = Intent(this, Teacher::class.java)
             startActivity(intent)
         }
     }

@@ -1,22 +1,24 @@
-package uk.ac.aber.dcs.cs31620.quizapp.model
+package uk.ac.aber.dcs.cs31620.quizapp.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface ModuleDao {
-    @Insert
-    fun insertMultipleModuleName(moduleList: List<Module>)
 
     @Insert
-    fun insertSingleModuleName(module: Module)
+    fun addModule(module: Module)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(module: Module)
+    fun updateModule(module: Module)
 
     @Delete
     fun deleteModule(module: Module)
 
     @Query("DELETE FROM modules")
-    fun deleteAll()
+    fun deleteAllModules()
+
+    @Query("SELECT * FROM modules")
+    fun readAllModules(): LiveData<List<Module>>
+
 }
