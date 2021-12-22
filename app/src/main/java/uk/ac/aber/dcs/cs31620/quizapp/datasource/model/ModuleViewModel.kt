@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.quizapp.model
+package uk.ac.aber.dcs.cs31620.quizapp.datasource.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -12,7 +12,7 @@ import uk.ac.aber.dcs.cs31620.quizapp.datasource.ModuleRepository
 
 class ModuleViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Module>>
+    val readAllData: LiveData<List<Module>>
     private val repository: ModuleRepository
 
     init {

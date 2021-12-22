@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.quizapp.fragments.add
+package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -6,16 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import org.w3c.dom.Text
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentAddBinding
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.Module
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.QuestionBank
-import uk.ac.aber.dcs.cs31620.quizapp.model.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.model.ModuleViewModel
 
 
 class AddFragment : Fragment() {

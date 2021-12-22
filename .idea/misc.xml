@@ -6,8 +6,11 @@
         <entry key="..\:/QuizApp/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/QuizApp/app/src/main/res/layout/activity_student.xml" value="0.38697916666666665" />
         <entry key="..\:/QuizApp/app/src/main/res/layout/activity_teacher.xml" value="0.1" />
+        <entry key="..\:/QuizApp/app/src/main/res/layout/custom_row.xml" value="0.18819655521783182" />
         <entry key="..\:/QuizApp/app/src/main/res/layout/fragment_add.xml" value="0.18819655521783182" />
         <entry key="..\:/QuizApp/app/src/main/res/layout/fragment_list.xml" value="0.18819655521783182" />
+        <entry key="..\:/QuizApp/app/src/main/res/layout/module_list.xml" value="0.278125" />
+        <entry key="..\:/QuizApp/app/src/main/res/layout/module_view.xml" value="0.2128623188405797" />
       </map>
     </option>
   </component>
