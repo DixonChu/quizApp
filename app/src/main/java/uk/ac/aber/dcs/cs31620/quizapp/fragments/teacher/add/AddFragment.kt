@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentAddBinding
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.Module
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.model.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.ModuleViewModel
 
 
 class AddFragment : Fragment() {
@@ -35,16 +35,19 @@ class AddFragment : Fragment() {
             insertDataToDatabase()
         }
 
+        binding.cancel.setOnClickListener{
+            findNavController().navigate(R.id.action_addFragment_to_listFragment)
+        }
+
         return binding.root
     }
 
     private fun insertDataToDatabase() {
         val moduleName = binding.addModuleName.text.toString()
         val moduleDescription = binding.addModuleDescription.text.toString()
-        val questionBank = binding.addQuestions.text.toString()
 
-        if (inputCheck(moduleName, moduleDescription, questionBank)) {
-            val module = Module(0, moduleName, moduleDescription, questionBank)
+        if (inputCheck(moduleName, moduleDescription)) {
+            val module = Module(0, moduleName, moduleDescription)
             mUserViewModel.addModule(module)
             Toast.makeText(requireContext(), "Successfully Added!", Toast.LENGTH_LONG).show()
 
@@ -57,12 +60,9 @@ class AddFragment : Fragment() {
 
     private fun inputCheck(
         moduleName: String,
-        moduleDescription: String,
-        questionBank: String
+        moduleDescription: String
     ): Boolean {
-        return !(TextUtils.isEmpty(moduleName) && TextUtils.isEmpty(moduleDescription) && TextUtils.isEmpty(
-            questionBank
-        ))
+        return !(TextUtils.isEmpty(moduleName) && TextUtils.isEmpty(moduleDescription))
     }
 
 }

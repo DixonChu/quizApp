@@ -14,14 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         studentButton();
         teacherButton();
 
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navigation_teacher) as NavHostFragment
-//        val navController = navHostFragment.navController
-//        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_teacher))
-//        setupActionBarWithNavController(navController,appBarConfiguration)
     }
 
     private fun studentButton() {

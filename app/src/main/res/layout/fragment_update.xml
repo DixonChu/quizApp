@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".fragments.teacher.add.AddFragment">
+    tools:context=".fragments.teacher.update.UpdateFragment">
 
     <EditText
-        android:id="@+id/addModuleName"
+        android:id="@+id/updateModuleName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/addModuleDescription"
+        android:id="@+id/updateModuleDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -33,29 +33,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addModuleName" />
+        app:layout_constraintTop_toBottomOf="@+id/updateModuleName" />
 
 
     <Button
-        android:id="@+id/add_btn"
+        android:id="@+id/update_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Add"
+        android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addModuleDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/updateModuleDescription" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/delete_module_button"
         android:backgroundTint="@color/red"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="cancel"
+        android:text="DELETE MODULE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/update_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

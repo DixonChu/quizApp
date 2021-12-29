@@ -1,16 +1,15 @@
-package uk.ac.aber.dcs.cs31620.quizapp.datasource
+package uk.ac.aber.dcs.cs31620.quizapp.datasource.module
 
 import android.content.Context
-import android.provider.CalendarContract
 import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
 
 @Database(entities = [Module::class], version = 1, exportSchema = false)
-//@TypeConverter(DateTimeConverter::class)
 abstract class ModuleDatabase : RoomDatabase() {
 
     abstract fun moduleDao(): ModuleDao

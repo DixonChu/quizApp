@@ -9,12 +9,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import uk.ac.aber.dcs.cs31620.quizapp.R
 
 class Teacher : AppCompatActivity() {
-//
-//    private var layoutManager: RecyclerView.LayoutManager? = null
-//    private var adapter: RecyclerView.Adapter<RecycleAdapter.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_teacher)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
