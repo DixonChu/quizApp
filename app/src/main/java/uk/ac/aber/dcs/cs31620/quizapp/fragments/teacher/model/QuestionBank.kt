@@ -12,6 +12,6 @@ data class QuestionBank(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     var id: Int,
-    var moduleInfo: String,
-    var questions: String,
+    var questionBankName: String,
+    var questionBankDescription: String,
 ) : Parcelable

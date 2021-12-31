@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:id="@+id/card_view"
+    android:id="@+id/questions_card_view"
     android:layout_margin="2dp"
     app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="12dp"
@@ -19,35 +19,28 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/module_title"
+            android:id="@+id/question_title"
             android:layout_width="236dp"
             android:layout_height="39dp"
-            android:layout_marginStart="16dp"
             android:textSize="30sp"
-            app:layout_constraintLeft_toRightOf="@id/card_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/questions_card_view"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="NotSibling" />
 
-        <TextView
-            android:id="@+id/module_details"
-            android:layout_width="236dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintLeft_toRightOf="@+id/card_view"
-            app:layout_constraintTop_toBottomOf="@+id/module_title"
-            tools:ignore="NotSibling" />
 
         <ImageButton
-            android:id="@+id/edit_button"
+            android:id="@+id/question_edit_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.954"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintStart_toEndOf="@+id/question_title"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.49"
+            app:layout_constraintVertical_bias="0.281"
             app:srcCompat="@drawable/ic_baseline_edit_24"
             tools:ignore="SpeakableTextPresentCheck" />
 

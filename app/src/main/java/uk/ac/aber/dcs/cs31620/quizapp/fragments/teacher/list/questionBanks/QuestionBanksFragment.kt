@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list
+package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questionBanks
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -6,47 +6,45 @@ import android.view.*
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
-import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentListBinding
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionbanksBinding
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
 
-class ListFragment : Fragment() {
+class QuestionBanksFragment : Fragment() {
 
-    private lateinit var mUserViewModel: ModuleViewModel
+    private lateinit var qbUserViewModel: QuestionBankViewModel
     private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<RecycleAdapter.ViewHolder>? = null
+    private var adapter: RecyclerView.Adapter<QuestionBankAdapter.ViewHolder>? = null
 
-    private var _binding: FragmentListBinding? = null
+    private var _binding: FragmentQuestionbanksBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View {
+    ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentQuestionbanksBinding.inflate(inflater, container, false)
 
-        val recyclerView = binding.recyclerview
+        val recyclerView = binding.questionBankRecyclerView
 
         layoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = layoutManager
 
-        adapter = RecycleAdapter()
+        adapter = QuestionBankAdapter()
         recyclerView.adapter = adapter
 
-        mUserViewModel = ViewModelProvider(this).get(ModuleViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner,
-            Observer { module -> (adapter as RecycleAdapter).setData(module) })
+        qbUserViewModel = ViewModelProvider(this).get(QuestionBankViewModel::class.java)
+        qbUserViewModel.readAllData.observe(viewLifecycleOwner,
+            { questionBank -> (adapter as QuestionBankAdapter).setData(questionBank) })
 
-        binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_listFragment_to_addFragment)
+        binding.addQuestionBankFloatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_questionbanks_to_add_question_banks)
         }
-
 
         // Add menu
         setHasOptionsMenu(true)
@@ -54,33 +52,34 @@ class ListFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.delete_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menu_delete) {
-            deleteAllModules()
+            deleteAllQuestionBanks()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun deleteAllModules() {
-        if(!binding.recyclerview.isEmpty()){
+    private fun deleteAllQuestionBanks() {
+        if (!binding.questionBankRecyclerView.isEmpty()) {
             val builder = AlertDialog.Builder(requireContext())
             builder.setPositiveButton("Yes") { _, _ ->
-                mUserViewModel.deleteAllModule()
-                Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT)
+                qbUserViewModel.deleteAllQuestionBank()
+                Toast.makeText(requireContext(),
+                    "Successfully removed everything",
+                    Toast.LENGTH_SHORT)
                     .show()
-                findNavController().navigate(R.id.listFragment)
+                findNavController().navigate(R.id.questionbanks)
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete everything?")
             builder.setMessage("Are you sure you want to delete everything?")
             builder.create().show()
         } else {
-            Toast.makeText(requireContext(), "Module lists are empty", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), "Question Bank lists are empty", Toast.LENGTH_SHORT)
                 .show()
         }
     }
@@ -89,5 +88,6 @@ class ListFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 
 }

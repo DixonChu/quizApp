@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".fragments.teacher.update.UpdateFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.teacher.add.questionBanks.AddQuestionBanks">
 
     <EditText
-        android:id="@+id/updateModuleName"
+        android:id="@+id/addQuestionBankName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="Module Name"
+        android:hint="Question Bank Name"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,29 +22,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/updateModuleDescription"
+        android:id="@+id/addQuestionBankDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Module Description"
+        android:hint="Question Bank Description"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateModuleName" />
+        app:layout_constraintTop_toBottomOf="@+id/addQuestionBankName" />
 
 
     <Button
-        android:id="@+id/update_btn"
+        android:id="@+id/add_question_bank_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Update"
+        android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateModuleDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/addQuestionBankDescription" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

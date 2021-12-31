@@ -54,15 +54,13 @@ class AddFragment : Fragment() {
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
 
         } else {
-            Toast.makeText(requireContext(), "Please fill in out all fields", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun inputCheck(
         moduleName: String,
         moduleDescription: String
-    ): Boolean {
-        return !(TextUtils.isEmpty(moduleName) && TextUtils.isEmpty(moduleDescription))
-    }
+    ): Boolean { return !(TextUtils.isEmpty(moduleName)) && !(TextUtils.isEmpty(moduleDescription)) }
 
 }

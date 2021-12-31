@@ -39,6 +39,8 @@ class RecycleAdapter:RecyclerView.Adapter<RecycleAdapter.ViewHolder>() {
             holder.itemView.findNavController().navigate(action)
         }
         holder.card.setOnClickListener{
+            val action = ListFragmentDirections.actionListFragmentToQuestionbanks()
+            holder.itemView.findNavController().navigate(action)
         }
 
     }

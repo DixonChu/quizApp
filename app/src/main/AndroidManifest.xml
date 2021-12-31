@@ -12,6 +12,7 @@
         <activity
             android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.Teacher"
             android:label="Teacher"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.Student"

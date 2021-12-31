@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.ListFragment"
-        android:label="List"
+        android:label="Module List"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_addFragment"
@@ -16,27 +16,113 @@
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_questionbanks"
+            app:destination="@id/questionbanks" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
         android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.AddFragment"
-        android:label="Add"
+        android:label="Add Module"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
         android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.UpdateFragment"
-        android:label="Update"
+        android:label="Update Module"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
         <argument
             android:name="currentModule"
             app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionbanks"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questionBanks.QuestionBanksFragment"
+        android:label="Question Bank"
+        tools:layout="@layout/fragment_questionbanks" >
+        <action
+            android:id="@+id/action_questionbanks_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/listFragment" />
+        <action
+            android:id="@+id/action_questionbanks_to_add_question_banks"
+            app:destination="@id/addQuestionBanks" />
+        <action
+            android:id="@+id/action_questionbanks_to_update_question_banks"
+            app:destination="@id/updateQuestionBanks" />
+        <action
+            android:id="@+id/action_questionbanks_to_questions"
+            app:destination="@id/questions" />
+    </fragment>
+    <fragment
+        android:id="@+id/addQuestionBanks"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.questionBanks.AddQuestionBanks"
+        android:label="Add Question Bank"
+        tools:layout="@layout/fragment_add_question_banks" >
+        <action
+            android:id="@+id/action_add_question_banks_to_questionbanks"
+            app:destination="@id/questionbanks"
+            app:popUpTo="@id/questionbanks" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateQuestionBanks"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.questionBanks.UpdateQuestionBanks"
+        android:label="Update Question Bank"
+        tools:layout="@layout/fragment_update_question_banks" >
+        <action
+            android:id="@+id/action_update_question_banks_to_questionbanks"
+            app:destination="@id/questionbanks"
+            app:popUpTo="@id/questionbanks" />
+        <argument
+            android:name="currentQuestionBank"
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank" />
+    </fragment>
+    <fragment
+        android:id="@+id/questions"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questions.Questions"
+        android:label="Questions"
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/action_questions_to_questionbanks"
+            app:destination="@id/questionbanks"
+            app:popUpTo="@id/questionbanks" />
+        <action
+            android:id="@+id/action_questions_to_addQuestions"
+            app:destination="@id/addQuestions" />
+        <action
+            android:id="@+id/action_questions_to_updateQuestions"
+            app:destination="@id/updateQuestions" />
+    </fragment>
+    <fragment
+        android:id="@+id/addQuestions"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.questions.AddQuestions"
+        android:label="Add Questions"
+        tools:layout="@layout/fragment_add_questions" >
+        <action
+            android:id="@+id/action_addQuestions_to_questions"
+            app:destination="@id/questions"
+            app:popUpTo="@id/questions" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateQuestions"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.questions.UpdateQuestions"
+        android:label="Update Questions"
+        tools:layout="@layout/fragment_update_questions" >
+        <action
+            android:id="@+id/action_updateQuestions_to_questions"
+            app:destination="@id/questions"
+            app:popUpTo="@id/questions" />
+        <argument
+            android:name="currentQuestion"
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question" />
     </fragment>
 
 </navigation>

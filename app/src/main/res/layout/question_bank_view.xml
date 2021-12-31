@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:id="@+id/card_view"
+    android:id="@+id/question_bank_card_view"
     android:layout_margin="2dp"
     app:cardBackgroundColor="#FFFFFF"
     app:cardCornerRadius="12dp"
@@ -19,26 +19,26 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/module_title"
+            android:id="@+id/question_bank_title"
             android:layout_width="236dp"
             android:layout_height="39dp"
             android:layout_marginStart="16dp"
             android:textSize="30sp"
-            app:layout_constraintLeft_toRightOf="@id/card_view"
+            app:layout_constraintLeft_toRightOf="@id/question_bank_card_view"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="NotSibling" />
 
         <TextView
-            android:id="@+id/module_details"
+            android:id="@+id/question_bank_description"
             android:layout_width="236dp"
             android:layout_height="18dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintLeft_toRightOf="@+id/card_view"
-            app:layout_constraintTop_toBottomOf="@+id/module_title"
+            app:layout_constraintLeft_toRightOf="@+id/question_bank_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/question_bank_title"
             tools:ignore="NotSibling" />
 
         <ImageButton
-            android:id="@+id/edit_button"
+            android:id="@+id/question_bank_edit_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/white"

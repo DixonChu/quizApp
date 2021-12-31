@@ -15,6 +15,8 @@ import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentUpdateBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
 
 
 class UpdateFragment : Fragment() {
@@ -22,6 +24,8 @@ class UpdateFragment : Fragment() {
     private val args by navArgs<UpdateFragmentArgs>()
 
     private lateinit var mUserViewModel: ModuleViewModel
+    private lateinit var qbUserViewModel: QuestionBankViewModel
+    private lateinit var qUserViewModel: QuestionViewModel
     private var _binding: FragmentUpdateBinding? = null
     private val binding get() = _binding!!
 
@@ -36,6 +40,8 @@ class UpdateFragment : Fragment() {
 //        val view = inflater.inflate(R.layout.fragment_update, container, false)
 
         mUserViewModel = ViewModelProvider(this)[ModuleViewModel::class.java]
+        qbUserViewModel = ViewModelProvider(this)[QuestionBankViewModel::class.java]
+        qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]
 
         binding.updateModuleName.setText(args.currentModule.moduleName)
         binding.updateModuleDescription.setText(args.currentModule.moduleDescription)
@@ -44,10 +50,8 @@ class UpdateFragment : Fragment() {
             updateItem()
         }
 
-        binding.deleteModuleButton.setOnClickListener {
-            deleteModule()
-        }
-
+        // Add menu
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -68,10 +72,25 @@ class UpdateFragment : Fragment() {
         return !(TextUtils.isEmpty(moduleName) && TextUtils.isEmpty(moduleDescription))
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_delete) {
+            deleteModule()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun deleteModule(){
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
             mUserViewModel.deleteModule(args.currentModule)
+            //delete Question Banks and Questions
+            qbUserViewModel.deleteAllQuestionBank()
+            qUserViewModel.deleteAllQuestion()
+
             Toast.makeText(requireContext(), "Successfully removed: ${args.currentModule.moduleName}", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
