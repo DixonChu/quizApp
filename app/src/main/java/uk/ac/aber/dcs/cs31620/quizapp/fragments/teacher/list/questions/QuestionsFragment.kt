@@ -6,16 +6,18 @@ import android.view.*
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionsBinding
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
 
-class Questions : Fragment() {
+class QuestionsFragment : Fragment() {
 
     private lateinit var qUserViewModel: QuestionViewModel
     private var layoutManager: RecyclerView.LayoutManager?=null
@@ -23,6 +25,8 @@ class Questions : Fragment() {
 
     private var _binding: FragmentQuestionsBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<QuestionsFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +44,12 @@ class Questions : Fragment() {
         recyclerView.adapter = adapter
 
         qUserViewModel = ViewModelProvider(this).get(QuestionViewModel::class.java)
-        qUserViewModel.readAllData.observe(viewLifecycleOwner, {question -> (adapter as QuestionAdapter).setData(question)})
+        val questionList = questionList()
+        questionList.observe(viewLifecycleOwner, {question -> (adapter as QuestionAdapter).setData(question)})
 
         binding.addQuestionFloatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_questions_to_addQuestions)
+            val action = QuestionsFragmentDirections.actionQuestionsToAddQuestions(args.questionBank.questionBankName)
+            findNavController().navigate(action)
         }
 
 
@@ -51,6 +57,11 @@ class Questions : Fragment() {
 
         return binding.root
 
+    }
+
+    private fun questionList(): LiveData<List<Question>> {
+        val questionBankName = args.questionBank.questionBankName
+        return qUserViewModel.getQuestionByQuestionBankName(questionBankName)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -70,7 +81,7 @@ class Questions : Fragment() {
             builder.setPositiveButton("Yes") { _, _ ->
                 qUserViewModel.deleteAllQuestion()
                 Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.questions)
+                findNavController().currentDestination
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete everything?")

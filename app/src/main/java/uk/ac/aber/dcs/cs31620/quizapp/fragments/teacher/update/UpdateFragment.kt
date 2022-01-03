@@ -88,8 +88,8 @@ class UpdateFragment : Fragment() {
         builder.setPositiveButton("Yes") { _, _ ->
             mUserViewModel.deleteModule(args.currentModule)
             //delete Question Banks and Questions
-            qbUserViewModel.deleteAllQuestionBank()
-            qUserViewModel.deleteAllQuestion()
+//            qbUserViewModel.deleteAllQuestionBankByModuleName(args.currentModule.moduleName)
+//            qUserViewModel.deleteAllQuestion()
 
             Toast.makeText(requireContext(), "Successfully removed: ${args.currentModule.moduleName}", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)

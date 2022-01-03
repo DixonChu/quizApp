@@ -9,7 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
-@Database(entities = [QuestionBank::class], version = 1, exportSchema = false)
+@Database(entities = [QuestionBank::class], version = 3, exportSchema = false)
 abstract class QuestionBankDatabase : RoomDatabase() {
 
     abstract fun questionBankDao(): QuestionBankDao
@@ -28,7 +28,7 @@ abstract class QuestionBankDatabase : RoomDatabase() {
                     context.applicationContext,
                     QuestionBankDatabase::class.java,
                     "question_bank_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }

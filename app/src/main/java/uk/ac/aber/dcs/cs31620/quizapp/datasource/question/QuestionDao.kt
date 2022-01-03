@@ -21,4 +21,7 @@ interface QuestionDao {
     @Query("SELECT * FROM questions ORDER BY id ASC")
     fun readAllQuestions(): LiveData<List<Question>>
 
+    @Query("SELECT * FROM questions WHERE questionBankName = :questionBankName")
+    fun getQuestionByQuestionBank(questionBankName: String): LiveData<List<Question>>
+
 }

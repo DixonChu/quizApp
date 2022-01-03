@@ -22,4 +22,8 @@ class QuestionRepository(private val questionDao: QuestionDao) {
     fun deleteAllQuestion(){
         questionDao.deleteAllQuestions()
     }
+
+    fun getQuestionByQuestionBankName(questionBankName: String): LiveData<List<Question>>{
+        return questionDao.getQuestionByQuestionBank(questionBankName)
+    }
 }

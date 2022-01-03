@@ -12,7 +12,7 @@ import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository.QuestionBankR
 
 class QuestionBankViewModel(application: Application) : AndroidViewModel(application) {
 
-    val readAllData: LiveData<List<QuestionBank>>
+    var readAllData: LiveData<List<QuestionBank>>
     private val repository: QuestionBankRepository
 
     init {
@@ -39,9 +39,16 @@ class QuestionBankViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    fun deleteAllQuestionBank(){
+    fun deleteAllQuestionBankByModuleName(moduleName: String){
         viewModelScope.launch(Dispatchers.IO){
-            repository.deleteAllQuestionBank()
+            repository.deleteAllQuestionBankByModuleName(moduleName)
         }
     }
+
+    fun getQuestionBankWithModuleName(moduleName: String): LiveData<List<QuestionBank>>{
+        readAllData = repository.getQuestionBankWithModuleName(moduleName)
+
+        return readAllData
+    }
+
 }

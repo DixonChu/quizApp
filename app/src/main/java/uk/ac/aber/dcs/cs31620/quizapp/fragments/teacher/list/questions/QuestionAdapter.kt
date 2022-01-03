@@ -31,7 +31,7 @@ class QuestionAdapter: RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
         holder.itemTitle.text = currentItem.question
 
         holder.editButton.setOnClickListener {
-            val action = QuestionsDirections.actionQuestionsToUpdateQuestions(currentItem)
+            val action = QuestionsFragmentDirections.actionQuestionsToUpdateQuestions(currentItem)
             holder.itemView.findNavController().navigate(action)
         }
 

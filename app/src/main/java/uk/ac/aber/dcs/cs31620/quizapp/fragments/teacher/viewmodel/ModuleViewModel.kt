@@ -9,11 +9,13 @@ import kotlinx.coroutines.launch
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.module.ModuleDatabase
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository.ModuleRepository
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
 class ModuleViewModel(application: Application): AndroidViewModel(application) {
 
     val readAllData: LiveData<List<Module>>
     private val repository: ModuleRepository
+
 
     init {
         val moduleDao = ModuleDatabase.getDatabase(application).moduleDao()
@@ -36,6 +38,7 @@ class ModuleViewModel(application: Application): AndroidViewModel(application) {
     fun deleteModule(module: Module){
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteModule(module)
+
         }
     }
 

@@ -34,6 +34,16 @@ class UpdateQuestions : Fragment() {
 
         binding.updateQuestionName.setText(args.currentQuestion.question)
         binding.updateQuestionAnswer.setText(args.currentQuestion.answer)
+        binding.updateOptionAnswer1.setText(args.currentQuestion.optionAns1)
+        binding.updateOptionAnswer2.setText(args.currentQuestion.optionAns2)
+        binding.updateOptionAnswer3.setText(args.currentQuestion.optionAns3)
+        binding.updateOptionAnswer4.setText(args.currentQuestion.optionAns4)
+        binding.updateOptionAnswer5.setText(args.currentQuestion.optionAns5)
+        binding.updateOptionAnswer6.setText(args.currentQuestion.optionAns6)
+        binding.updateOptionAnswer7.setText(args.currentQuestion.optionAns7)
+        binding.updateOptionAnswer8.setText(args.currentQuestion.optionAns8)
+        binding.updateOptionAnswer9.setText(args.currentQuestion.optionAns9)
+        binding.updateOptionAnswer10.setText(args.currentQuestion.optionAns10)
 
         binding.updateQuestionBtn.setOnClickListener {
             updateItem()
@@ -60,7 +70,7 @@ class UpdateQuestions : Fragment() {
 
 
         if (inputCheck(questionName, questionAnswer)) {
-            val updatedQuestion = Question(args.currentQuestion.id,
+            val updatedQuestion = Question(args.currentQuestion.id,args.currentQuestion.questionBankName,
                 questionName,
                 questionAnswer,
                 optionAns1,

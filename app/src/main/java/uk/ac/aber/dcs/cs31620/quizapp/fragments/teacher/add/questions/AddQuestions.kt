@@ -1,16 +1,23 @@
 package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.questions
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentAddQuestionsBinding
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.module.ModuleDatabase
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.questionBanks.AddQuestionBanksArgs
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
 
@@ -18,9 +25,13 @@ import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewMo
 class AddQuestions : Fragment() {
 
     private lateinit var qUserViewModel: QuestionViewModel
+    private lateinit var layoutInflater: LinearLayout.LayoutParams
+    private lateinit var linearLayout: LinearLayout
 
     private var _binding: FragmentAddQuestionsBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<AddQuestionsArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +64,9 @@ class AddQuestions : Fragment() {
         val optionAns10 = binding.optionAnswer10.text.toString()
 
         if (inputCheck(questionName, questionAnswer)) {
-            val question = Question(0,
+            val question = Question(
+                0,
+                args.currentQuestionName,
                 questionName,
                 questionAnswer,
                 optionAns1,
@@ -65,13 +78,18 @@ class AddQuestions : Fragment() {
                 optionAns7,
                 optionAns8,
                 optionAns9,
-                optionAns10)
+                optionAns10
+            )
 
             qUserViewModel.addQuestion(question)
+            findNavController().popBackStack()
             Toast.makeText(requireContext(), "Successfully Added!", Toast.LENGTH_LONG).show()
-            findNavController().navigate(R.id.action_addQuestions_to_questions)
         } else {
-            Toast.makeText(requireContext(), "Please fill in Question Name and Correct answer fields", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                requireContext(),
+                "Please fill in Question Name and Correct answer fields",
+                Toast.LENGTH_LONG
+            ).show()
 
         }
 

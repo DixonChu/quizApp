@@ -40,8 +40,7 @@ class ListFragment : Fragment() {
         recyclerView.adapter = adapter
 
         mUserViewModel = ViewModelProvider(this).get(ModuleViewModel::class.java)
-        mUserViewModel.readAllData.observe(viewLifecycleOwner,
-            Observer { module -> (adapter as RecycleAdapter).setData(module) })
+        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { module -> (adapter as RecycleAdapter).setData(module) })
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
@@ -73,7 +72,7 @@ class ListFragment : Fragment() {
                 mUserViewModel.deleteAllModule()
                 Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT)
                     .show()
-                findNavController().navigate(R.id.listFragment)
+                findNavController().currentDestination
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete everything?")

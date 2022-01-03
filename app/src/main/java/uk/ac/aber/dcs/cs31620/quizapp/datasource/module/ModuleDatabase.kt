@@ -8,8 +8,11 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.relations.QuestionBankWithQuestionCrossRef
 
-@Database(entities = [Module::class], version = 1, exportSchema = false)
+@Database(entities = [Module::class], version = 2, exportSchema = false)
 abstract class ModuleDatabase : RoomDatabase() {
 
     abstract fun moduleDao(): ModuleDao
@@ -28,7 +31,7 @@ abstract class ModuleDatabase : RoomDatabase() {
                     context.applicationContext,
                     ModuleDatabase::class.java,
                     "module_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }
