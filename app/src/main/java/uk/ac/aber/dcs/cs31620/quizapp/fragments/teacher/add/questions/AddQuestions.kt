@@ -66,6 +66,7 @@ class AddQuestions : Fragment() {
         if (inputCheck(questionName, questionAnswer)) {
             val question = Question(
                 0,
+                args.currentModuleName,
                 args.currentQuestionName,
                 questionName,
                 questionAnswer,

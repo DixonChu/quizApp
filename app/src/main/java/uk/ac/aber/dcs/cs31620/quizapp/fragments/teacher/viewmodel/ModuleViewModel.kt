@@ -38,7 +38,6 @@ class ModuleViewModel(application: Application): AndroidViewModel(application) {
     fun deleteModule(module: Module){
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteModule(module)
-
         }
     }
 

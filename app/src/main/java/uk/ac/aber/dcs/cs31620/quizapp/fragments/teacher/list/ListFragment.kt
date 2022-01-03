@@ -14,10 +14,14 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentListBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
 
 class ListFragment : Fragment() {
 
     private lateinit var mUserViewModel: ModuleViewModel
+    private lateinit var qbUserViewModel: QuestionBankViewModel
+    private lateinit var qUserViewModel: QuestionViewModel
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<RecycleAdapter.ViewHolder>? = null
 
@@ -70,6 +74,7 @@ class ListFragment : Fragment() {
             val builder = AlertDialog.Builder(requireContext())
             builder.setPositiveButton("Yes") { _, _ ->
                 mUserViewModel.deleteAllModule()
+//                qbUserViewModel.deleteAllQuestionBankByModuleName()
                 Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT)
                     .show()
                 findNavController().currentDestination

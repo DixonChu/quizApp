@@ -109,6 +109,9 @@
         <argument
             android:name="questionBank"
             app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank" />
+        <argument
+            android:name="moduleName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addQuestions"
@@ -121,6 +124,9 @@
             app:popUpTo="@id/questions" />
         <argument
             android:name="currentQuestionName"
+            app:argType="string" />
+        <argument
+            android:name="currentModuleName"
             app:argType="string" />
     </fragment>
     <fragment

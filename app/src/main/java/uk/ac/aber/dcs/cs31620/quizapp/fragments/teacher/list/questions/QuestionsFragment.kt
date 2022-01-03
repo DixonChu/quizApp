@@ -48,7 +48,7 @@ class QuestionsFragment : Fragment() {
         questionList.observe(viewLifecycleOwner, {question -> (adapter as QuestionAdapter).setData(question)})
 
         binding.addQuestionFloatingActionButton.setOnClickListener {
-            val action = QuestionsFragmentDirections.actionQuestionsToAddQuestions(args.questionBank.questionBankName)
+            val action = QuestionsFragmentDirections.actionQuestionsToAddQuestions(args.questionBank.questionBankName, args.moduleName)
             findNavController().navigate(action)
         }
 

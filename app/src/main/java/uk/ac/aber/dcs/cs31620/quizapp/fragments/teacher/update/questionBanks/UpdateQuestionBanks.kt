@@ -81,6 +81,8 @@ class UpdateQuestionBanks : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
             qbUserViewModel.deleteQuestionBank(args.currentQuestionBank)
+
+            qUserViewModel.deleteQuestionByQuestionBankName(args.currentQuestionBank.questionBankName)
             Toast.makeText(requireContext(),
                 "Successfully removed: ${args.currentQuestionBank.questionBankName}",
                 Toast.LENGTH_SHORT).show()

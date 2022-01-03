@@ -9,7 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 
-@Database(entities = [Question::class], version = 2, exportSchema = false)
+@Database(entities = [Question::class], version = 3, exportSchema = false)
 abstract class QuestionDatabase : RoomDatabase() {
 
     abstract fun questionDao(): QuestionDao

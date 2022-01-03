@@ -12,7 +12,7 @@ import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.relations.QuestionBankWithQuestionCrossRef
 
-@Database(entities = [Module::class], version = 2, exportSchema = false)
+@Database(entities = [Module::class], version = 3, exportSchema = false)
 abstract class ModuleDatabase : RoomDatabase() {
 
     abstract fun moduleDao(): ModuleDao

@@ -18,6 +18,12 @@ interface QuestionDao {
     @Query("DELETE FROM questions")
     fun deleteAllQuestions()
 
+    @Query("DELETE FROM questions WHERE questionBankName =:questionBankName")
+    fun deleteQuestionByQuestionBank(questionBankName: String)
+
+    @Query("DELETE FROM questions WHERE moduleName =:moduleName")
+    fun deleteQuestionByModule(moduleName: String)
+
     @Query("SELECT * FROM questions ORDER BY id ASC")
     fun readAllQuestions(): LiveData<List<Question>>
 

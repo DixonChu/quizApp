@@ -70,7 +70,9 @@ class UpdateQuestions : Fragment() {
 
 
         if (inputCheck(questionName, questionAnswer)) {
-            val updatedQuestion = Question(args.currentQuestion.id,args.currentQuestion.questionBankName,
+            val updatedQuestion = Question(args.currentQuestion.id,
+                args.currentQuestion.moduleName,
+                args.currentQuestion.questionBankName,
                 questionName,
                 questionAnswer,
                 optionAns1,

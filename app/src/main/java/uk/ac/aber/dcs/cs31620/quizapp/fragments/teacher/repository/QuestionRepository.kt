@@ -23,6 +23,14 @@ class QuestionRepository(private val questionDao: QuestionDao) {
         questionDao.deleteAllQuestions()
     }
 
+    fun deleteQuestionByQuestionBankName(questionBankName: String){
+        questionDao.deleteQuestionByQuestionBank(questionBankName)
+    }
+
+    fun deleteQuestionByModuleName(moduleName: String){
+        questionDao.deleteQuestionByModule(moduleName)
+    }
+
     fun getQuestionByQuestionBankName(questionBankName: String): LiveData<List<Question>>{
         return questionDao.getQuestionByQuestionBank(questionBankName)
     }

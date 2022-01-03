@@ -10,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 data class Question (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    val moduleName: String,
     val questionBankName: String,
     val question: String,
     val answer: String,

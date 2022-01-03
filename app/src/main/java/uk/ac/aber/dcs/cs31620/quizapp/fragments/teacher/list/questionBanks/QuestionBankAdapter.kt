@@ -35,7 +35,7 @@ class QuestionBankAdapter : RecyclerView.Adapter<QuestionBankAdapter.ViewHolder>
         }
 
         holder.cardView.setOnClickListener {
-            val action = QuestionBanksFragmentDirections.actionQuestionbanksToQuestions(currentItem)
+            val action = QuestionBanksFragmentDirections.actionQuestionbanksToQuestions(currentItem, currentItem.moduleName)
             holder.itemView.findNavController().navigate(action)
         }
 
