@@ -44,6 +44,10 @@ class ListFragment : Fragment() {
         recyclerView.adapter = adapter
 
         mUserViewModel = ViewModelProvider(this).get(ModuleViewModel::class.java)
+        qbUserViewModel = ViewModelProvider(this).get(QuestionBankViewModel::class.java)
+        qUserViewModel = ViewModelProvider(this).get(QuestionViewModel::class.java)
+
+
         mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { module -> (adapter as RecycleAdapter).setData(module) })
 
         binding.floatingActionButton.setOnClickListener {
@@ -74,7 +78,9 @@ class ListFragment : Fragment() {
             val builder = AlertDialog.Builder(requireContext())
             builder.setPositiveButton("Yes") { _, _ ->
                 mUserViewModel.deleteAllModule()
-//                qbUserViewModel.deleteAllQuestionBankByModuleName()
+                qbUserViewModel.deleteAllQuestionBank()
+                qUserViewModel.deleteAllQuestion()
+
                 Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT)
                     .show()
                 findNavController().currentDestination

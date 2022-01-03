@@ -18,6 +18,9 @@ interface QuestionBankDao {
     @Query("DELETE FROM questionBanks WHERE moduleName= :moduleName")
     fun deleteAllQuestionBanksByModuleName(moduleName: String)
 
+    @Query("DELETE FROM questionBanks")
+    fun deleteAllQuestionBank()
+
     @Query("SELECT * FROM questionBanks")
     fun readAllQuestionBanks(): LiveData<List<QuestionBank>>
 
