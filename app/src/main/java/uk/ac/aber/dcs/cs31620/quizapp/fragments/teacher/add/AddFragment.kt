@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentAddBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.ModuleViewModel
 
 
 class AddFragment : Fragment() {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_navigation_graph"
+    app:startDestination="@id/chooseQuizModeFragment">
+
+    <fragment
+        android:id="@+id/chooseQuizModeFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.list.ChooseQuizModeFragment"
+        android:label="Choose Quiz Mode"
+        tools:layout="@layout/fragment_choose_quiz_mode" >
+        <action
+            android:id="@+id/action_chooseQuizModeFragment_to_quizView"
+            app:destination="@id/quizView" />
+        <action
+            android:id="@+id/action_chooseQuizModeFragment_to_listQuestionBank"
+            app:destination="@id/listQuestionBank" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizView"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.randomQuiz.QuizView"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_quiz_view" >
+        <action
+            android:id="@+id/action_quizView_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.list.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" />
+    <fragment
+        android:id="@+id/listQuestionBank"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.chooseQuestionBankQuiz.ListQuestionBankForStudent"
+        android:label="fragment_list_question_bank"
+        tools:layout="@layout/fragment_list_question_bank" >
+        <action
+            android:id="@+id/action_listQuestionBank_to_chooseQuizModeFragment"
+            app:destination="@id/chooseQuizModeFragment"
+            app:popUpTo="@id/chooseQuizModeFragment" />
+        <action
+            android:id="@+id/action_listQuestionBank_to_quizView2"
+            app:destination="@id/quizView" />
+    </fragment>
+</navigation>

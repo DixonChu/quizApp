@@ -3,7 +3,6 @@ package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.questionBanks
 import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -13,8 +12,8 @@ import androidx.navigation.fragment.navArgs
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentUpdateQuestionBanksBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 
 class UpdateQuestionBanks : Fragment() {
 
@@ -53,9 +52,11 @@ class UpdateQuestionBanks : Fragment() {
         val questionBankDescription = binding.updateQuestionBanksDescription.text.toString()
 
         if (inputCheck(questionBankName, questionBankDescription)) {
-            val updatedQuestionBank = QuestionBank(args.currentQuestionBank.uid,args.currentQuestionBank.moduleName, questionBankName, questionBankDescription)
+            val updatedQuestionBank = QuestionBank(args.currentQuestionBank.uid, args.currentQuestionBank.moduleName, questionBankName, questionBankDescription)
             qbUserViewModel.updateQuestionBank(updatedQuestionBank)
-            findNavController().navigate(R.id.action_update_question_banks_to_questionbanks)
+//            findNavController().navigate(R.id.action_update_question_banks_to_questionbanks)
+            findNavController().popBackStack()
+            Toast.makeText(requireContext(), "Question bank update successfully", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(requireContext(), "Please fill in all fields.", Toast.LENGTH_SHORT)
                 .show()

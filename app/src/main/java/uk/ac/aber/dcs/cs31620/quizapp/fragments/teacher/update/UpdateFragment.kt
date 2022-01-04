@@ -2,21 +2,19 @@ package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentUpdateBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.ModuleViewModel
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.ModuleViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 
 
 class UpdateFragment : Fragment() {
@@ -62,7 +60,11 @@ class UpdateFragment : Fragment() {
         if (inputCheck(moduleName, moduleDescription)){
             val updatedModule = Module(args.currentModule.id, moduleName, moduleDescription)
             mUserViewModel.updateModule(updatedModule)
-            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+
+//            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            findNavController().popBackStack()
+            Toast.makeText(requireContext(), "Module name update successfully", Toast.LENGTH_SHORT).show()
+
         }else {
             Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show()
         }

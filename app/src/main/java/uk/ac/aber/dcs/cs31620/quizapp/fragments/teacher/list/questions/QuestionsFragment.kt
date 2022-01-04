@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionsBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 
 class QuestionsFragment : Fragment() {
 
@@ -79,9 +79,9 @@ class QuestionsFragment : Fragment() {
         if(!binding.questionRecyclerView.isEmpty()){
             val builder = AlertDialog.Builder(requireContext())
             builder.setPositiveButton("Yes") { _, _ ->
-                qUserViewModel.deleteAllQuestion()
-                Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT).show()
+                qUserViewModel.deleteQuestionByQuestionBankName(args.questionBank.questionBankName)
                 findNavController().currentDestination
+                Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT).show()
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete everything?")

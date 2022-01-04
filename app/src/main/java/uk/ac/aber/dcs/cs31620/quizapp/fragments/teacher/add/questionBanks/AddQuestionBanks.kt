@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentAddQuestionBanksBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionBankViewModel
 
 class AddQuestionBanks : Fragment() {
 

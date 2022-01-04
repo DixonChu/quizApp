@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel
+package uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,10 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.module.ModuleDatabase
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.QuizDatabase
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository.ModuleRepository
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
 class ModuleViewModel(application: Application): AndroidViewModel(application) {
 
@@ -18,8 +17,9 @@ class ModuleViewModel(application: Application): AndroidViewModel(application) {
 
 
     init {
-        val moduleDao = ModuleDatabase.getDatabase(application).moduleDao()
-        repository = ModuleRepository(moduleDao)
+//        val moduleDao = ModuleDatabase.getDatabase(application).moduleDao()
+        val quizDao = QuizDatabase.getDatabase(application).quizDao()
+        repository = ModuleRepository(quizDao)
         readAllData = repository.readAllData
     }
 

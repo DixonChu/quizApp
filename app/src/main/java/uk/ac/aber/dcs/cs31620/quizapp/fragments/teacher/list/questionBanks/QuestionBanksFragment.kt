@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionbanksBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionBankViewModel
 
 class QuestionBanksFragment : Fragment() {
 

@@ -10,10 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import uk.ac.aber.dcs.cs31620.quizapp.R
-import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentUpdateBinding
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentUpdateQuestionsBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.viewmodel.QuestionViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 
 class UpdateQuestions : Fragment() {
 
@@ -70,7 +69,8 @@ class UpdateQuestions : Fragment() {
 
 
         if (inputCheck(questionName, questionAnswer)) {
-            val updatedQuestion = Question(args.currentQuestion.id,
+            val updatedQuestion = Question(
+                args.currentQuestion.id,
                 args.currentQuestion.moduleName,
                 args.currentQuestion.questionBankName,
                 questionName,
@@ -87,7 +87,10 @@ class UpdateQuestions : Fragment() {
                 optionAns10)
 
             qUserViewModel.updateQuestion(updatedQuestion)
-            findNavController().navigate(R.id.action_updateQuestions_to_questions)
+//            findNavController().navigate(R.id.action_updateQuestions_to_questions)
+            findNavController().popBackStack()
+            Toast.makeText(requireContext(), "Question update successfully", Toast.LENGTH_SHORT).show()
+
 
         }
 
@@ -113,7 +116,7 @@ class UpdateQuestions : Fragment() {
         builder.setPositiveButton("Yes") { _, _ ->
         qUserViewModel.deleteQuestion(args.currentQuestion)
             Toast.makeText(requireContext(), "Successfully removed: ${args.currentQuestion.question}", Toast.LENGTH_LONG).show()
-            findNavController().navigate(R.id.action_updateQuestions_to_questions)
+            findNavController().popBackStack()
         }
         builder.setNegativeButton("No") {_, _ -> }
         builder.setTitle("Delete ${args.currentQuestion.question}?")

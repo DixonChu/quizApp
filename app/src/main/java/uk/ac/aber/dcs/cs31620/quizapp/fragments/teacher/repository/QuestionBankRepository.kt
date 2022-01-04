@@ -1,12 +1,11 @@
 package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository
 
 import androidx.lifecycle.LiveData
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.module.ModuleDao
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.questionBank.QuestionBankDao
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.QuizDao
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
-class QuestionBankRepository(private val questionBankDao: QuestionBankDao) {
+class QuestionBankRepository(private val questionBankDao: QuizDao) {
 
     val readAllData: LiveData<List<QuestionBank>> = questionBankDao.readAllQuestionBanks()
 
