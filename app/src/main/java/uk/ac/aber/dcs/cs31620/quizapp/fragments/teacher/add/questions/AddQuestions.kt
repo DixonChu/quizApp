@@ -63,7 +63,7 @@ class AddQuestions : Fragment() {
                 args.currentModuleName,
                 args.currentQuestionName,
                 questionName,
-                questionAnswer,
+                questionAnswer.toInt(),
                 optionAns1,
                 optionAns2,
                 optionAns3,

@@ -32,7 +32,7 @@ class UpdateQuestions : Fragment() {
         qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]
 
         binding.updateQuestionName.setText(args.currentQuestion.question)
-        binding.updateQuestionAnswer.setText(args.currentQuestion.answer)
+        binding.updateQuestionAnswer.setText(args.currentQuestion.questionAnswer.toString())
         binding.updateOptionAnswer1.setText(args.currentQuestion.optionAns1)
         binding.updateOptionAnswer2.setText(args.currentQuestion.optionAns2)
         binding.updateOptionAnswer3.setText(args.currentQuestion.optionAns3)
@@ -74,7 +74,7 @@ class UpdateQuestions : Fragment() {
                 args.currentQuestion.moduleName,
                 args.currentQuestion.questionBankName,
                 questionName,
-                questionAnswer,
+                questionAnswer.toInt(),
                 optionAns1,
                 optionAns2,
                 optionAns3,

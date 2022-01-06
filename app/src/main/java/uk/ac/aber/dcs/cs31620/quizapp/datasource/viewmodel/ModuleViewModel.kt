@@ -29,11 +29,6 @@ class ModuleViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun updateModule(module: Module){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.updateModule(module)
-        }
-    }
 
     fun deleteModule(module: Module){
         viewModelScope.launch(Dispatchers.IO){
@@ -41,9 +36,16 @@ class ModuleViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun deleteAllModule(){
+    fun deleteAllData(){
         viewModelScope.launch(Dispatchers.IO){
-            repository.deleteAllModule()
+            repository.deleteAllData()
         }
+    }
+
+    fun updateAllData(module: Module, moduleName: String, currentModuleName: String){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateAllData(module, moduleName, currentModuleName)
+        }
+
     }
 }

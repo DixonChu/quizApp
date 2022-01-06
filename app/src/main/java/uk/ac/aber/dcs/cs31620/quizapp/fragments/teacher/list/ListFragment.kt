@@ -77,13 +77,11 @@ class ListFragment : Fragment() {
         if(!binding.recyclerview.isEmpty()){
             val builder = AlertDialog.Builder(requireContext())
             builder.setPositiveButton("Yes") { _, _ ->
-                mUserViewModel.deleteAllModule()
-                qbUserViewModel.deleteAllQuestionBank()
-                qUserViewModel.deleteAllQuestion()
+                mUserViewModel.deleteAllData()
 
                 Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT)
                     .show()
-                findNavController().currentDestination
+                findNavController().popBackStack()
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete everything?")

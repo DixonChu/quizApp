@@ -26,28 +26,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ems="10"
-            android:hint="Question Name"
+            android:hint="Question"
             android:inputType="text"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+            <EditText
             android:id="@+id/addQuestionAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Correct Answer"
-            android:inputType="text"
+            android:hint="Which option is the correct answer?"
+            android:inputType="number"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addQuestionName" />
 
-        <EditText
+            <EditText
             android:id="@+id/optionAnswer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,26 +173,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/optionAnswer8" />
 
-        <EditText
-            android:id="@+id/optionAnswer10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Option 10"
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/optionAnswer9" />
+            <EditText
+                android:id="@+id/optionAnswer10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Option 10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/optionAnswer9" />
+
 
         <Button
             android:id="@+id/add_question_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Add"
+            android:text="Add Question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

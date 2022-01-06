@@ -33,9 +33,16 @@ class QuestionBankViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    fun deleteQuestionBank(questionBank: QuestionBank){
+    fun updateQuestionBankNameWithQuestion(questionBank: QuestionBank, questionBankName: String, currentQuestionBankName: String){
         viewModelScope.launch(Dispatchers.IO){
-            repository.deleteQuestionBank(questionBank)
+            repository.updateQuestionBankNameWithQuestion(questionBank, questionBankName, currentQuestionBankName)
+        }
+    }
+
+
+    fun deleteQuestionBankAndQuestion(questionBank: QuestionBank, questionBankName: String){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteQuestionBankAndQuestion(questionBank, questionBankName)
         }
     }
 
@@ -45,11 +52,6 @@ class QuestionBankViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    fun deleteAllQuestionBank(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.deleteAllQuestionBank()
-        }
-    }
 
     fun getQuestionBankWithModuleName(moduleName: String): LiveData<List<QuestionBank>>{
         readAllData = repository.getQuestionBankWithModuleName(moduleName)

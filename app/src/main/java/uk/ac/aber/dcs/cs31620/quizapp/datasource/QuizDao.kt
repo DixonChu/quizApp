@@ -1,7 +1,9 @@
 package uk.ac.aber.dcs.cs31620.quizapp.datasource
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questions.QuestionsFragmentDirections
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
@@ -12,7 +14,7 @@ interface QuizDao {
     @Insert
     fun addModule(module: Module)
 
-    @Update(onConflict =  OnConflictStrategy.REPLACE)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateModule(module: Module)
 
     @Delete
@@ -23,7 +25,6 @@ interface QuizDao {
 
     @Query("SELECT * FROM modules")
     fun readAllModules(): LiveData<List<Module>>
-
 
     @Insert
     fun addQuestionBank(questionBank: QuestionBank)
@@ -46,7 +47,6 @@ interface QuizDao {
     @Query("SELECT * FROM questionBanks WHERE moduleName= :moduleName")
     fun readQuestionBankWithModuleName(moduleName: String): LiveData<List<QuestionBank>>
 
-
     @Insert
     fun addQuestion(question: Question)
 
@@ -68,9 +68,58 @@ interface QuizDao {
     @Query("SELECT * FROM questions")
     fun readAllQuestions(): LiveData<List<Question>>
 
+
+    @Query("UPDATE questionBanks SET moduleName =:moduleName WHERE moduleName =:currentModuleName")
+    fun updateModuleNameInQuestionBank(moduleName: String, currentModuleName: String)
+
+    @Query("UPDATE questions SET moduleName =:moduleName WHERE moduleName =:currentModuleName")
+    fun updateModuleNameInQuestion(moduleName: String, currentModuleName: String)
+
+
+    @Query("UPDATE questions SET questionBankName =:questionBankName WHERE questionBankName =:currentQuestionBankName")
+    fun updateQuestionBankNameInQuestion(questionBankName: String, currentQuestionBankName: String)
+
+
     @Query("SELECT * FROM questions WHERE questionBankName = :questionBankName")
     fun getQuestionByQuestionBank(questionBankName: String): LiveData<List<Question>>
 
+
+
+
+
+    //---------------------- Transaction ----------------------
+
+    // Update Logic
+    @Transaction
+    fun updateAllData(module: Module, moduleName: String, currentModuleName: String) {
+        updateModule(module)
+        updateModuleNameInQuestion(moduleName, currentModuleName)
+        updateModuleNameInQuestionBank(moduleName, currentModuleName)
+    }
+
+    @Transaction
+    fun updateQuestionBankNameWithQuestion(
+        questionBank: QuestionBank,
+        questionBankName: String,
+        currentQuestionBankName: String
+    ) {
+        updateQuestionBank(questionBank)
+        updateQuestionBankNameInQuestion(questionBankName, currentQuestionBankName)
+    }
+
+    // Delete Logic
+    @Transaction
+    fun deleteAllData() {
+        deleteAllModules()
+        deleteAllQuestionBank()
+        deleteAllQuestions()
+    }
+
+    @Transaction
+    fun deleteQuestionBankAndQuestion(questionBank: QuestionBank, questionBankName: String) {
+        deleteQuestionBank(questionBank)
+        deleteQuestionByQuestionBank(questionBankName)
+    }
 
 
 }

@@ -53,7 +53,8 @@ class UpdateQuestionBanks : Fragment() {
 
         if (inputCheck(questionBankName, questionBankDescription)) {
             val updatedQuestionBank = QuestionBank(args.currentQuestionBank.uid, args.currentQuestionBank.moduleName, questionBankName, questionBankDescription)
-            qbUserViewModel.updateQuestionBank(updatedQuestionBank)
+            qbUserViewModel.updateQuestionBankNameWithQuestion(updatedQuestionBank, questionBankName, args.currentQuestionBank.questionBankName, )
+
 //            findNavController().navigate(R.id.action_update_question_banks_to_questionbanks)
             findNavController().popBackStack()
             Toast.makeText(requireContext(), "Question bank update successfully", Toast.LENGTH_SHORT).show()
@@ -81,9 +82,8 @@ class UpdateQuestionBanks : Fragment() {
     private fun deleteQuestionBank() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-            qbUserViewModel.deleteQuestionBank(args.currentQuestionBank)
+            qbUserViewModel.deleteQuestionBankAndQuestion(args.currentQuestionBank, args.currentQuestionBank.questionBankName)
 
-            qUserViewModel.deleteQuestionByQuestionBankName(args.currentQuestionBank.questionBankName)
             Toast.makeText(requireContext(),
                 "Successfully removed: ${args.currentQuestionBank.questionBankName}",
                 Toast.LENGTH_SHORT).show()

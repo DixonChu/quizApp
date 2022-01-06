@@ -3,6 +3,7 @@ package uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -60,4 +61,21 @@ class QuestionViewModel(application: Application) : AndroidViewModel(application
         readAllData = repository.getQuestionByQuestionBankName(questionBankName)
         return readAllData
     }
+
+//    val questionList: MutableLiveData<Array<String>> = MutableLiveData()
+//    fun queryAllQuestionName() {
+//        viewModelScope.launch(Dispatchers.IO){
+//            questionList.value = repository.queryAllQuestionName()
+//        }
+//    }
+
+    fun queryAllOptions(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.queryAllOptions()
+        }
+    }
+
+
+
+
 }

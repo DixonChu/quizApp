@@ -8,7 +8,7 @@ import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
-@Database(entities = [Module::class, QuestionBank::class, Question::class], version = 2, exportSchema = false)
+@Database(entities = [Module::class, QuestionBank::class, Question::class], version = 4, exportSchema = false)
 
 abstract class QuizDatabase: RoomDatabase() {
     abstract fun quizDao(): QuizDao

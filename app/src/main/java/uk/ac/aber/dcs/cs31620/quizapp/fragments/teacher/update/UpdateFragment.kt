@@ -59,9 +59,9 @@ class UpdateFragment : Fragment() {
 
         if (inputCheck(moduleName, moduleDescription)){
             val updatedModule = Module(args.currentModule.id, moduleName, moduleDescription)
-            mUserViewModel.updateModule(updatedModule)
 
-//            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            mUserViewModel.updateAllData(updatedModule,moduleName, args.currentModule.moduleName)
+
             findNavController().popBackStack()
             Toast.makeText(requireContext(), "Module name update successfully", Toast.LENGTH_SHORT).show()
 

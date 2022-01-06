@@ -13,7 +13,7 @@ data class Question (
     val moduleName: String,
     val questionBankName: String,
     val question: String,
-    val answer: String,
+    val questionAnswer: Int,
     val optionAns1: String,
     val optionAns2: String,
     val optionAns3: String,
