@@ -1,7 +1,6 @@
 package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.QuizDao
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 
@@ -20,10 +19,6 @@ class QuestionRepository(private val questionDao: QuizDao) {
         questionDao.deleteQuestion(question)
     }
 
-    fun deleteAllQuestion(){
-        questionDao.deleteAllQuestions()
-    }
-
     fun deleteQuestionByQuestionBankName(questionBankName: String){
         questionDao.deleteQuestionByQuestionBank(questionBankName)
     }
@@ -36,17 +31,7 @@ class QuestionRepository(private val questionDao: QuizDao) {
         return questionDao.getQuestionByQuestionBank(questionBankName)
     }
 
-    fun updateModuleNameInQuestion(moduleName: String, currentModuleName:String){
-        return questionDao.updateModuleNameInQuestion(moduleName, currentModuleName)
-    }
 
-    fun updateQuestionBankNameInQuestion(questionBankName: String, currentQuestionBankName: String){
-        return questionDao.updateQuestionBankNameInQuestion(questionBankName, currentQuestionBankName)
-    }
-
-//    suspend fun queryAllQuestionName(): Array<String> {
-//        return questionDao.queryAllQuestionName()
-//    }
 
 
 }

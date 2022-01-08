@@ -12,10 +12,6 @@ class ModuleRepository(private val moduleDao: QuizDao) {
         moduleDao.addModule(module)
     }
 
-    fun updateModule(module: Module){
-        moduleDao.updateModule(module)
-    }
-
     fun deleteModule(module: Module){
         moduleDao.deleteModule(module)
     }

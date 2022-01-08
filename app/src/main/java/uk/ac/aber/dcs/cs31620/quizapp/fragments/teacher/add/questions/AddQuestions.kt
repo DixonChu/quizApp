@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,8 +18,6 @@ import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 class AddQuestions : Fragment() {
 
     private lateinit var qUserViewModel: QuestionViewModel
-    private lateinit var layoutInflater: LinearLayout.LayoutParams
-    private lateinit var linearLayout: LinearLayout
 
     private var _binding: FragmentAddQuestionsBinding? = null
     private val binding get() = _binding!!
@@ -30,11 +27,11 @@ class AddQuestions : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentAddQuestionsBinding.inflate(inflater, container, false)
 
-        qUserViewModel = ViewModelProvider(this).get(QuestionViewModel::class.java)
+        qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]
 
         binding.addQuestionBtn.setOnClickListener {
             insertToDatabase()

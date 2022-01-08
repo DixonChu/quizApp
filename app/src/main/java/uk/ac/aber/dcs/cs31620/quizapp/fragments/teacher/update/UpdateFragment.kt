@@ -32,10 +32,8 @@ class UpdateFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View {
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
-//        val view = inflater.inflate(R.layout.fragment_update, container, false)
 
         mUserViewModel = ViewModelProvider(this)[ModuleViewModel::class.java]
         qbUserViewModel = ViewModelProvider(this)[QuestionBankViewModel::class.java]

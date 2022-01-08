@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentListQuestionBankBinding
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionBankViewModel
-import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 
 
 class ListQuestionBankForStudent : Fragment() {
@@ -19,7 +18,6 @@ class ListQuestionBankForStudent : Fragment() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<ListQuestionBankForStudentAdapter.ViewHolder>?=null
-    private lateinit var qUserViewModel: QuestionViewModel
 
     private var _binding: FragmentListQuestionBankBinding?= null
     private val binding get() = _binding!!
@@ -28,7 +26,7 @@ class ListQuestionBankForStudent : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListQuestionBankBinding.inflate(inflater, container, false)
 
         val recyclerView = binding.studentQuestionBankRecycleView

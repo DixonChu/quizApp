@@ -1,13 +1,10 @@
 package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list
 
-import android.os.Bundle
-import android.util.Log
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.NavArgs
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
@@ -56,6 +53,7 @@ class RecycleAdapter() : RecyclerView.Adapter<RecycleAdapter.ViewHolder>() {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(module: List<Module>) {
         this.moduleList = module
         notifyDataSetChanged()

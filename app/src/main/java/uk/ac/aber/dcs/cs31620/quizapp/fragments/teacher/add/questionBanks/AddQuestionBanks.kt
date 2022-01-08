@@ -26,11 +26,11 @@ class AddQuestionBanks : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentAddQuestionBanksBinding.inflate(inflater, container, false)
 
-        qbUserViewModel = ViewModelProvider(this).get(QuestionBankViewModel::class.java)
+        qbUserViewModel = ViewModelProvider(this)[QuestionBankViewModel::class.java]
 
         binding.addQuestionBankBtn.setOnClickListener {
             insertDataToDatabase()

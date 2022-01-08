@@ -31,7 +31,7 @@ class QuizView : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentQuizViewBinding.inflate(inflater, null, false)
 
         qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]

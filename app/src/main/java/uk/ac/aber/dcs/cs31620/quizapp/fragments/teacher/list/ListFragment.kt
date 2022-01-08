@@ -6,7 +6,6 @@ import android.view.*
 import android.widget.Toast
 import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,12 +42,12 @@ class ListFragment : Fragment() {
         adapter = RecycleAdapter()
         recyclerView.adapter = adapter
 
-        mUserViewModel = ViewModelProvider(this).get(ModuleViewModel::class.java)
-        qbUserViewModel = ViewModelProvider(this).get(QuestionBankViewModel::class.java)
-        qUserViewModel = ViewModelProvider(this).get(QuestionViewModel::class.java)
+        mUserViewModel = ViewModelProvider(this)[ModuleViewModel::class.java]
+        qbUserViewModel = ViewModelProvider(this)[QuestionBankViewModel::class.java]
+        qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]
 
 
-        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { module -> (adapter as RecycleAdapter).setData(module) })
+        mUserViewModel.readAllData.observe(viewLifecycleOwner) { module -> (adapter as RecycleAdapter).setData(module) }
 
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)

@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questions
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
 import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionsBinding
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
 class QuestionAdapter: RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
 
@@ -43,6 +43,7 @@ class QuestionAdapter: RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(question: List<Question>) {
         this.questionList = question
         notifyDataSetChanged()

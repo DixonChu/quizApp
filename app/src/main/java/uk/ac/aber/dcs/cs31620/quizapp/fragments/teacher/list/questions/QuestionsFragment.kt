@@ -31,7 +31,7 @@ class QuestionsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentQuestionsBinding.inflate(inflater, container, false)
 
@@ -43,7 +43,7 @@ class QuestionsFragment : Fragment() {
         adapter = QuestionAdapter()
         recyclerView.adapter = adapter
 
-        qUserViewModel = ViewModelProvider(this).get(QuestionViewModel::class.java)
+        qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]
         val questionList = questionList()
         questionList.observe(viewLifecycleOwner, {question -> (adapter as QuestionAdapter).setData(question)})
 

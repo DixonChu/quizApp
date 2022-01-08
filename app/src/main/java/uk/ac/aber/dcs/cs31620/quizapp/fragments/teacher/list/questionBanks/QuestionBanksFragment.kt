@@ -26,14 +26,13 @@ class QuestionBanksFragment : Fragment() {
 
     private var _binding: FragmentQuestionbanksBinding? = null
     private val binding get() = _binding!!
-    private val moduleName: String get() = args.module.moduleName
 
     private val args by navArgs<QuestionBanksFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentQuestionbanksBinding.inflate(inflater, container, false)
 
@@ -45,7 +44,7 @@ class QuestionBanksFragment : Fragment() {
         adapter = QuestionBankAdapter()
         recyclerView.adapter = adapter
 
-        qbUserViewModel = ViewModelProvider(this).get(QuestionBankViewModel::class.java)
+        qbUserViewModel = ViewModelProvider(this)[QuestionBankViewModel::class.java]
         val questionBankList = questionBankList()
         questionBankList.observe(viewLifecycleOwner){questionBanks -> (adapter as QuestionBankAdapter).setData(questionBanks)}
 

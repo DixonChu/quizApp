@@ -1,15 +1,13 @@
 package uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questionBanks
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.quizapp.R
-import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionbanksBinding
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
 
 class QuestionBankAdapter : RecyclerView.Adapter<QuestionBankAdapter.ViewHolder>() {
@@ -48,6 +46,7 @@ class QuestionBankAdapter : RecyclerView.Adapter<QuestionBankAdapter.ViewHolder>
         var cardView: View = itemView.findViewById(R.id.question_bank_card_view)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(questionBank: List<QuestionBank>) {
         this.questionBankList = questionBank
         notifyDataSetChanged()

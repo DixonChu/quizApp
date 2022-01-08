@@ -28,7 +28,7 @@ class UpdateQuestionBanks : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentUpdateQuestionBanksBinding.inflate(inflater, container, false)
 
@@ -53,9 +53,8 @@ class UpdateQuestionBanks : Fragment() {
 
         if (inputCheck(questionBankName, questionBankDescription)) {
             val updatedQuestionBank = QuestionBank(args.currentQuestionBank.uid, args.currentQuestionBank.moduleName, questionBankName, questionBankDescription)
-            qbUserViewModel.updateQuestionBankNameWithQuestion(updatedQuestionBank, questionBankName, args.currentQuestionBank.questionBankName, )
+            qbUserViewModel.updateQuestionBankNameWithQuestion(updatedQuestionBank, questionBankName, args.currentQuestionBank.questionBankName)
 
-//            findNavController().navigate(R.id.action_update_question_banks_to_questionbanks)
             findNavController().popBackStack()
             Toast.makeText(requireContext(), "Question bank update successfully", Toast.LENGTH_SHORT).show()
         } else {
