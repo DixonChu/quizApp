@@ -48,7 +48,5 @@ class QuestionRepository(private val questionDao: QuizDao) {
 //        return questionDao.queryAllQuestionName()
 //    }
 
-    fun queryAllOptions(){
 
-    }
 }

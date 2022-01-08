@@ -5,20 +5,46 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import uk.ac.aber.dcs.cs31620.quizapp.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentListQuestionBankBinding
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionBankViewModel
+import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 
 
 class ListQuestionBankForStudent : Fragment() {
+
+    private lateinit var qbUserViewModel: QuestionBankViewModel
+
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<ListQuestionBankForStudentAdapter.ViewHolder>?=null
+    private lateinit var qUserViewModel: QuestionViewModel
+
+    private var _binding: FragmentListQuestionBankBinding?= null
+    private val binding get() = _binding!!
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentListQuestionBankBinding.inflate(inflater, container, false)
 
-        //RecycleView For listing QuestionBank
+        val recyclerView = binding.studentQuestionBankRecycleView
 
-        return inflater.inflate(R.layout.fragment_list_question_bank, container, false)
+        layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = layoutManager
+
+        adapter = ListQuestionBankForStudentAdapter()
+        recyclerView.adapter = adapter
+
+        qbUserViewModel = ViewModelProvider(this)[QuestionBankViewModel::class.java]
+        qbUserViewModel.readAllData.observe(viewLifecycleOwner){questionBank -> (adapter as ListQuestionBankForStudentAdapter).setData(questionBank)}
+
+
+        return binding.root
     }
+
 
 }

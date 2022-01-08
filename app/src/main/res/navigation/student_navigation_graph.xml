@@ -23,25 +23,34 @@
         android:label="Quiz"
         tools:layout="@layout/fragment_quiz_view" >
         <action
-            android:id="@+id/action_quizView_to_scoreFragment"
-            app:destination="@id/scoreFragment" />
+            android:id="@+id/action_quizView_to_chooseQuizModeFragment"
+            app:destination="@id/chooseQuizModeFragment"
+            app:popUpTo="@id/chooseQuizModeFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/scoreFragment"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.list.ScoreFragment"
-        android:label="fragment_score"
-        tools:layout="@layout/fragment_score" />
     <fragment
         android:id="@+id/listQuestionBank"
         android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.chooseQuestionBankQuiz.ListQuestionBankForStudent"
-        android:label="fragment_list_question_bank"
+        android:label="Question Banks"
         tools:layout="@layout/fragment_list_question_bank" >
         <action
             android:id="@+id/action_listQuestionBank_to_chooseQuizModeFragment"
             app:destination="@id/chooseQuizModeFragment"
             app:popUpTo="@id/chooseQuizModeFragment" />
         <action
-            android:id="@+id/action_listQuestionBank_to_quizView2"
-            app:destination="@id/quizView" />
+            android:id="@+id/action_listQuestionBank_to_questionBankQuizView"
+            app:destination="@id/questionBankQuizView" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionBankQuizView"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.chooseQuestionBankQuiz.QuestionBankQuizView"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_question_bank_quiz_view" >
+        <argument
+            android:name="questionBank"
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank" />
+        <action
+            android:id="@+id/action_questionBankQuizView_to_listQuestionBank"
+            app:destination="@id/listQuestionBank"
+            app:popUpTo="@id/listQuestionBank" />
     </fragment>
 </navigation>

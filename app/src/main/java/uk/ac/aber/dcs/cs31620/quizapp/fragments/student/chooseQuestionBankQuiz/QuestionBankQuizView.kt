@@ -1,65 +1,81 @@
-package uk.ac.aber.dcs.cs31620.quizapp.fragments.student.randomQuiz
+package uk.ac.aber.dcs.cs31620.quizapp.fragments.student.chooseQuestionBankQuiz
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuizViewBinding
+import androidx.navigation.fragment.navArgs
+import androidx.preference.PreferenceManager
+import uk.ac.aber.dcs.cs31620.quizapp.databinding.FragmentQuestionBankQuizViewBinding
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel.QuestionViewModel
 import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
 
-
-class QuizView : Fragment() {
+class QuestionBankQuizView : Fragment() {
 
     private var index = -1
     private var questionNum = 0
     private var score = 0
 
-    private var _binding: FragmentQuizViewBinding? = null
+    private var _binding: FragmentQuestionBankQuizViewBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var qUserViewModel: QuestionViewModel
     private val questionList = emptyList<Question>().toMutableList()
 
+    private val args by navArgs<QuestionBankQuizViewArgs>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentQuizViewBinding.inflate(inflater, null, false)
-
+        // Inflate the layout for this fragment
+        _binding = FragmentQuestionBankQuizViewBinding.inflate(inflater, container, false)
         qUserViewModel = ViewModelProvider(this)[QuestionViewModel::class.java]
 
-        binding.endQuizButton.setOnClickListener {
+        binding.endQuizButtonChoose.setOnClickListener {
             endQuizDialog()
         }
 
-        binding.buttonConfirmNext.isEnabled = false
-        binding.buttonConfirmNext.alpha = 0.5.toFloat()
+        binding.buttonConfirmNextChoose.isEnabled = false
+        binding.buttonConfirmNextChoose.alpha = 0.5.toFloat()
 
-        getQuestions()
+
+        val question = getQuestions()
+        question.observe(viewLifecycleOwner) { questions ->
+            for (element in questions.shuffled()) {
+                questionList += element
+            }
+
+            if(questionList.isNotEmpty()){
+                execute(questionList)
+            } else {
+                val dialog = AlertDialog.Builder(context)
+                dialog.setTitle("No Quiz For This Module At The Moment")
+                dialog.setPositiveButton("Close") { dialog, _ ->
+                    dialog?.dismiss()
+                    findNavController().popBackStack()
+                }
+                dialog.show()
+            }
+        }
+
 
         return binding.root
     }
 
 
-    private fun getQuestions() {
-
-        qUserViewModel.readAllData.observe(
-            viewLifecycleOwner
-        )
-        { array ->
-            for (element in array.shuffled()) {
-                questionList += element
-            }
-            execute(questionList)
-        }
+    private fun getQuestions(): LiveData<List<Question>> {
+        val questionBankName = args.questionBank.questionBankName
+        return qUserViewModel.getQuestionByQuestionBankName(questionBankName)
     }
 
     @SuppressLint("SetTextI18n")
@@ -67,30 +83,30 @@ class QuizView : Fragment() {
         if (index == -1) {
             index++
             questionNum++
-
             val option = option(questionList[index])
 
-            binding.numberOfQuestion.text = questionNum.toString() + "/" + questionList.size.toString()
-            binding.textViewQuestion.text = questionList[index].question
-            binding.listOptions.clearCheck()
+            binding.numberOfQuestionChoose.text =
+                questionNum.toString() + "/" + questionList.size.toString()
+            binding.textViewQuestionChoose.text = questionList[index].question
+            binding.listOptionsChoose.clearCheck()
             radioButton(option)
         } else {
             nextQuestion()
         }
 
-        binding.buttonConfirmNext.isEnabled = true
-        binding.buttonConfirmNext.alpha = 1.toFloat()
+        binding.buttonConfirmNextChoose.isEnabled = true
+        binding.buttonConfirmNextChoose.alpha = 1.toFloat()
 
-        binding.buttonConfirmNext.setOnClickListener {
+        binding.buttonConfirmNextChoose.setOnClickListener {
             if (index == -1) {
                 index++
                 questionNum++
 
                 val option = option(questionList[index])
 
-                binding.numberOfQuestion.text = questionNum.toString() + "/" + questionList.size.toString()
-                binding.textViewQuestion.text = questionList[index].question
-                binding.listOptions.clearCheck()
+                binding.numberOfQuestionChoose.text = questionNum.toString() + "/" + questionList.size.toString()
+                binding.textViewQuestionChoose.text = questionList[index].question
+                binding.listOptionsChoose.clearCheck()
                 radioButton(option)
 
             } else {
@@ -101,7 +117,7 @@ class QuizView : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun nextQuestion() {
-        val selected = binding.listOptions.checkedRadioButtonId
+        val selected = binding.listOptionsChoose.checkedRadioButtonId
 
         if (index < questionList.size) {
 //            Log.d("selected", "$selected")
@@ -113,16 +129,17 @@ class QuizView : Fragment() {
 
         index++
         questionNum++
-        binding.listOptions.removeAllViews()
+        binding.listOptionsChoose.removeAllViews()
 
         if (index < questionList.size) {
             val option = option(questionList[index])
-            binding.numberOfQuestion.text = questionNum.toString() + "/" + questionList.size.toString()
-            binding.textViewQuestion.text = questionList[index].question
+            binding.numberOfQuestionChoose.text =
+                questionNum.toString() + "/" + questionList.size.toString()
+            binding.textViewQuestionChoose.text = questionList[index].question
             radioButton(option)
-            binding.listOptions.clearCheck()
+            binding.listOptionsChoose.clearCheck()
             if ((index + 1) == questionList.size)
-                binding.buttonConfirmNext.text = "Finish"
+                binding.buttonConfirmNextChoose.text = "Finish"
         } else {
             val dialog = AlertDialog.Builder(context)
             dialog.setTitle("Your Score")
@@ -141,7 +158,7 @@ class QuizView : Fragment() {
             val radioButton = RadioButton(this.context)
             radioButton.text = option[j]
             radioButton.id = j + 1
-            binding.listOptions.addView(radioButton)
+            binding.listOptionsChoose.addView(radioButton)
         }
     }
 

@@ -39,11 +39,6 @@ class QuestionViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun deleteAllQuestion(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.deleteAllQuestion()
-        }
-    }
 
     fun deleteQuestionByQuestionBankName(questionBankName: String){
         viewModelScope.launch(Dispatchers.IO){
@@ -60,19 +55,6 @@ class QuestionViewModel(application: Application) : AndroidViewModel(application
     fun getQuestionByQuestionBankName(questionBankName: String): LiveData<List<Question>>{
         readAllData = repository.getQuestionByQuestionBankName(questionBankName)
         return readAllData
-    }
-
-//    val questionList: MutableLiveData<Array<String>> = MutableLiveData()
-//    fun queryAllQuestionName() {
-//        viewModelScope.launch(Dispatchers.IO){
-//            questionList.value = repository.queryAllQuestionName()
-//        }
-//    }
-
-    fun queryAllOptions(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.queryAllOptions()
-        }
     }
 
 

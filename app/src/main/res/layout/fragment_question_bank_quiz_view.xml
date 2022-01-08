@@ -5,49 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".fragments.student.randomQuiz.QuizView">
+    tools:context=".fragments.student.chooseQuestionBankQuiz.QuestionBankQuizView">
 
     <TextView
-        android:id="@+id/numberOfQuestion"
+        android:id="@+id/numberOfQuestion_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
         android:textAlignment="center"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:text="" />
 
 
     <TextView
-        android:id="@+id/text_view_question"
+        android:id="@+id/text_view_question_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="139dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="54dp"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp" />
 
     <RadioGroup
-        android:id="@+id/list_options"
+        android:id="@+id/list_options_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_question"
-        android:layout_marginTop="12dp" />
+        android:layout_below="@+id/text_view_question_choose"
+        android:layout_marginTop="34dp" />
 
     <Button
-        android:id="@+id/end_quiz_button"
+        android:id="@+id/end_quiz_button_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_confirm_next"
+        android:layout_below="@id/button_confirm_next_choose"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/red"
         android:text="Exit Quiz" />
 
     <Button
-        android:id="@+id/button_confirm_next"
+        android:id="@+id/button_confirm_next_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/list_options"
+        android:layout_below="@+id/list_options_choose"
         android:layout_marginTop="25dp"
         android:text="Next" />
 
