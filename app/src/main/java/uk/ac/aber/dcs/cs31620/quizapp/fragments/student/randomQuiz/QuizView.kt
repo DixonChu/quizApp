@@ -58,7 +58,18 @@ class QuizView : Fragment() {
             for (element in array.shuffled()) {
                 questionList += element
             }
-            execute(questionList)
+
+            if(questionList.isNotEmpty()){
+                execute(questionList)
+            } else {
+                val dialog = AlertDialog.Builder(context)
+                dialog.setTitle("No Quiz Available At The Moment")
+                dialog.setPositiveButton("Close") { dialog, _ ->
+                    dialog?.dismiss()
+                    findNavController().popBackStack()
+                }
+                dialog.show()
+            }
         }
     }
 
