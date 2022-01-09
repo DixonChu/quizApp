@@ -16,14 +16,8 @@ import uk.ac.aber.dcs.cs31620.quizapp.util.LiveDataTestUtil
 import uk.ac.aber.dcs.cs31620.quizapp.util.TestUtil
 import java.lang.Exception
 
-
-/**
- * This test scenario is inserting module, question banks and questions that assigned to the module name.
- * When deleting the module, question bank and questions that assigned to the module are going to be removed.
- */
-
 @RunWith(AndroidJUnit4::class)
-class TestScenario1 {
+class QuestionBankTest {
     @JvmField
     @Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -45,16 +39,7 @@ class TestScenario1 {
         db.close()
     }
 
-    @Test
-    fun onInsertingModule_checkThat_moduleWasInserted() = runBlocking {
-        val module = testUtil.createModule(1, "CS31620", "Android Development")
-
-        quizDao.addModule(module[0])
-
-        val foundModule = quizDao.readAllModules()
-        assertEquals(1, LiveDataTestUtil.getValue(foundModule).size)
-    }
-
+    // Create and Read
     @Test
     fun onInsertingQuestionBank_checkThat_questionBankWasInserted() = runBlocking {
         val questionBank = testUtil.createQuestionBank(1, "CS31620","Question Bank Test 1", "Question Bank Test 1 Description")
@@ -65,26 +50,29 @@ class TestScenario1 {
         assertEquals(1, LiveDataTestUtil.getValue(foundModule).size)
     }
 
+    //Update
     @Test
-    fun onInsertingQuestion_checkThat_questionWasInserted() = runBlocking {
-        val question = testUtil.createQuestion(1, "CS31620","Question Bank Test 1", "What is the current test called?", 1, "Test Scenario 1", "Test Scenario 2", "Test Scenario 3", "Test Scenario 4", "Test Scenario 5", "Test Scenario 6", "null", "null", "null", "null")
+    fun onUpdateQuestionBank_checkThat_questionBankWasUpdated(){
+        val questionBank = testUtil.createQuestionBank(1, "CS31620","Question Bank Test 1", "Question Bank Test 1 Description")
+        val question = testUtil.createQuestion(1, "CS31620","Question Bank Test 1", "What is this?", 1, "This is a question", "answer2", "answer3", "answer4", "answer5", "answer6", "answer7", "answer8", "answer9", "answer10")
 
         quizDao.addQuestion(question[0])
 
-        val foundQuestion = quizDao.readAllQuestions()
+        quizDao.updateQuestionBankNameWithQuestion(questionBank[0], "Question Bank Update Test 1", "Question Bank Test 1")
+        val foundQuestion = quizDao.getQuestionByQuestionBank("Question Bank Update Test 1")
         assertEquals(1, LiveDataTestUtil.getValue(foundQuestion).size)
     }
 
+
+    // Remove
     @Test
-    fun onRemovingModule_checkThat_questionBankAndQuestionWasRemoved() = runBlocking {
-        quizDao.deleteAllData()
-        val foundModule = quizDao.readAllModules()
-        val foundQuestionBank = quizDao.readAllQuestionBanks()
-        val foundQuestion = quizDao.readAllQuestions()
+    fun onDeletingQuestionBanks_checkThat_questionBanksWasDeleted() = runBlocking {
+
+        quizDao.deleteAllQuestionBank()
+        val foundModule = quizDao.readAllQuestionBanks()
         assertEquals(0, LiveDataTestUtil.getValue(foundModule).size)
-        assertEquals(0, LiveDataTestUtil.getValue(foundQuestionBank).size)
-        assertEquals(0, LiveDataTestUtil.getValue(foundQuestion).size)
     }
+
 
 
 }
