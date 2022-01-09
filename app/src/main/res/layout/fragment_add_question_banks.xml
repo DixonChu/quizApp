@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.teacher.add.questionBanks.AddQuestionBanks">
+    tools:context=".ui.teacher.add.questionBanks.AddQuestionBanks">
 
     <EditText
         android:id="@+id/addQuestionBankName"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="Question Bank Name"
+        android:hint="@string/question_bank_name"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Question Bank Description"
+        android:hint="@string/question_bank_description"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".fragments.student.chooseQuestionBankQuiz.QuestionBankQuizView">
+    tools:context=".ui.student.chooseQuestionBankQuiz.QuestionBankQuizView">
 
     <TextView
         android:id="@+id/numberOfQuestion_choose"

@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
+import uk.ac.aber.dcs.cs31620.quizapp.model.Module
+import uk.ac.aber.dcs.cs31620.quizapp.model.Question
+import uk.ac.aber.dcs.cs31620.quizapp.model.QuestionBank
 
-@Database(entities = [Module::class, QuestionBank::class, Question::class], version = 4, exportSchema = false)
+@Database(entities = [Module::class, QuestionBank::class, Question::class], version = 1, exportSchema = false)
 
 abstract class QuizDatabase: RoomDatabase() {
     abstract fun quizDao(): QuizDao

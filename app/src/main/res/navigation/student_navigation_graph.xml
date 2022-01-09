@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/chooseQuizModeFragment"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.list.ChooseQuizModeFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.student.list.ChooseQuizModeFragment"
         android:label="Choose Quiz Mode"
         tools:layout="@layout/fragment_choose_quiz_mode" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/quizView"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.randomQuiz.QuizView"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.student.randomQuiz.QuizView"
         android:label="Quiz"
         tools:layout="@layout/fragment_quiz_view" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/listQuestionBank"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.chooseQuestionBankQuiz.ListQuestionBankForStudent"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.student.chooseQuestionBankQuiz.ListQuestionBankForStudent"
         android:label="Question Banks"
         tools:layout="@layout/fragment_list_question_bank" >
         <action
@@ -42,12 +42,12 @@
     </fragment>
     <fragment
         android:id="@+id/questionBankQuizView"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.student.chooseQuestionBankQuiz.QuestionBankQuizView"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.student.chooseQuestionBankQuiz.QuestionBankQuizView"
         android:label="Quiz"
         tools:layout="@layout/fragment_question_bank_quiz_view" >
         <argument
             android:name="questionBank"
-            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank" />
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.model.QuestionBank" />
         <action
             android:id="@+id/action_questionBankQuizView_to_listQuestionBank"
             app:destination="@id/listQuestionBank"

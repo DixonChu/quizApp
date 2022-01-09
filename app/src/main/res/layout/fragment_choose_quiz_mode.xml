@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.student.list.ChooseQuizModeFragment">
+    tools:context=".ui.student.list.ChooseQuizModeFragment">
 
     <Button
         android:id="@+id/choose_question_bank_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Question Bank"
+        android:text="@string/choose_question_bank"
         app:layout_constraintBottom_toTopOf="@+id/random_quiz_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="312dp"
-        android:text="Random Question Bank"
+        android:text="@string/random_question_bank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

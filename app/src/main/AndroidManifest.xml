@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp" >
         <activity
-            android:name=".fragments.teacher.Teacher"
+            android:name=".ui.teacher.Teacher"
             android:exported="false"
             android:label="Teacher"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".fragments.student.Student"
+            android:name=".ui.student.Student"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

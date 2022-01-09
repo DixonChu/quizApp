@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.student.Student
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.Teacher
+import uk.ac.aber.dcs.cs31620.quizapp.ui.student.Student
+import uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.Teacher
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // Student Page
     private fun studentButton() {
         val studentButton = findViewById<Button>(R.id.studentButton)
         studentButton.setOnClickListener {
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Teacher page
     private fun teacherButton() {
         val teacherButton = findViewById<Button>(R.id.teacherButton)
         teacherButton.setOnClickListener {

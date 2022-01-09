@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.teacher.update.questionBanks.UpdateQuestionBanks">
+    tools:context=".ui.teacher.update.questionBanks.UpdateQuestionBanks">
 
     <EditText
         android:id="@+id/updateQuestionBankName"

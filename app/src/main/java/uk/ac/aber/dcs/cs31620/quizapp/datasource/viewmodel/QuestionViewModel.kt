@@ -3,13 +3,12 @@ package uk.ac.aber.dcs.cs31620.quizapp.datasource.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.QuizDatabase
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository.QuestionRepository
+import uk.ac.aber.dcs.cs31620.quizapp.model.Question
+import uk.ac.aber.dcs.cs31620.quizapp.repository.QuestionRepository
 
 class QuestionViewModel(application: Application) : AndroidViewModel(application) {
     var readAllData: LiveData<List<Question>>

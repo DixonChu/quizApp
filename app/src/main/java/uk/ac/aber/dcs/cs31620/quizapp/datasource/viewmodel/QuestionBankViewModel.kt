@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uk.ac.aber.dcs.cs31620.quizapp.datasource.QuizDatabase
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank
-import uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.repository.QuestionBankRepository
+import uk.ac.aber.dcs.cs31620.quizapp.model.QuestionBank
+import uk.ac.aber.dcs.cs31620.quizapp.repository.QuestionBankRepository
 
 class QuestionBankViewModel(application: Application) : AndroidViewModel(application) {
 

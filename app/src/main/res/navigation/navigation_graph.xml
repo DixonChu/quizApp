@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.ListFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.list.ListFragment"
         android:label="Module List"
         tools:layout="@layout/fragment_list" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.AddFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.add.AddModule"
         android:label="Add Module"
         tools:layout="@layout/fragment_add" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.UpdateFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.update.UpdateFragment"
         android:label="Update Module"
         tools:layout="@layout/fragment_update" >
         <action
@@ -42,11 +42,11 @@
             app:popUpTo="@id/listFragment" />
         <argument
             android:name="currentModule"
-            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module" />
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.model.Module" />
     </fragment>
     <fragment
         android:id="@+id/questionbanks"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questionBanks.QuestionBanksFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.list.questionBanks.QuestionBanksFragment"
         android:label="Question Bank"
         tools:layout="@layout/fragment_questionbanks" >
         <action
@@ -64,11 +64,11 @@
             app:destination="@id/questions" />
         <argument
             android:name="module"
-            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Module" />
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.model.Module" />
     </fragment>
     <fragment
         android:id="@+id/addQuestionBanks"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.questionBanks.AddQuestionBanks"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.add.questionBanks.AddQuestionBanks"
         android:label="Add Question Bank"
         tools:layout="@layout/fragment_add_question_banks" >
         <action
@@ -82,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateQuestionBanks"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.questionBanks.UpdateQuestionBanks"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.update.questionBanks.UpdateQuestionBanks"
         android:label="Update Question Bank"
         tools:layout="@layout/fragment_update_question_banks" >
         <action
@@ -91,11 +91,11 @@
             app:popUpTo="@id/questionbanks" />
         <argument
             android:name="currentQuestionBank"
-            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank" />
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.model.QuestionBank" />
     </fragment>
     <fragment
         android:id="@+id/questions"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.list.questions.QuestionsFragment"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.list.questions.QuestionsFragment"
         android:label="Questions"
         tools:layout="@layout/fragment_questions" >
         <action
@@ -110,14 +110,14 @@
             app:destination="@id/updateQuestions" />
         <argument
             android:name="questionBank"
-            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.QuestionBank" />
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.model.QuestionBank" />
         <argument
             android:name="moduleName"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addQuestions"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.add.questions.AddQuestions"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.add.questions.AddQuestions"
         android:label="Add Questions"
         tools:layout="@layout/fragment_add_questions" >
         <action
@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateQuestions"
-        android:name="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.update.questions.UpdateQuestions"
+        android:name="uk.ac.aber.dcs.cs31620.quizapp.ui.teacher.update.questions.UpdateQuestions"
         android:label="Update Questions"
         tools:layout="@layout/fragment_update_questions" >
         <action
@@ -143,7 +143,7 @@
             app:popUpTo="@id/questions" />
         <argument
             android:name="currentQuestion"
-            app:argType="uk.ac.aber.dcs.cs31620.quizapp.fragments.teacher.model.Question" />
+            app:argType="uk.ac.aber.dcs.cs31620.quizapp.model.Question" />
     </fragment>
 
 </navigation>
