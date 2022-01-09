@@ -81,7 +81,7 @@ class ListFragment : Fragment() {
 
                 Toast.makeText(requireContext(), "Successfully removed everything", Toast.LENGTH_SHORT)
                     .show()
-                findNavController().popBackStack()
+                findNavController().currentDestination
             }
             builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete everything?")

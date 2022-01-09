@@ -77,7 +77,7 @@ class AddQuestions : Fragment() {
             findNavController().popBackStack()
             Toast.makeText(requireContext(), "Successfully Added!", Toast.LENGTH_SHORT).show()
         } else {
-            if((questionAnswer.toInt() < 0) || (questionAnswer.toInt() > 11)){
+            if(TextUtils.isEmpty(questionAnswer) || (questionAnswer.toInt() < 0) || (questionAnswer.toInt() > 11)){
                 Toast.makeText(requireContext(), "Please input only 1 to 10 for the correct answer field", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(requireContext(), "Please fill in the fields correctly", Toast.LENGTH_SHORT).show()
@@ -89,7 +89,7 @@ class AddQuestions : Fragment() {
 
     // Check important field which cannot be empty
     private fun inputCheck(questionName: String, questionAnswer: String): Boolean {
-        return !(TextUtils.isEmpty(questionName)) && (questionAnswer.toInt() > 0) && (questionAnswer.toInt() < 11)
+        return !(TextUtils.isEmpty(questionName)) && !(TextUtils.isEmpty(questionAnswer)) && (questionAnswer.toInt() > 0) && (questionAnswer.toInt() < 11)
     }
 
     // If question answer is n, then option n cannot be empty

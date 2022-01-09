@@ -156,7 +156,7 @@ class QuizView : Fragment() {
     // No quiz dialog
     private fun noQuizDialog(){
         val dialog = AlertDialog.Builder(context)
-        dialog.setTitle("No Quiz For This Module At The Moment")
+        dialog.setTitle("No Quiz At The Moment")
         dialog.setPositiveButton("Close") { dialog, _ ->
             dialog?.dismiss()
             findNavController().popBackStack()
