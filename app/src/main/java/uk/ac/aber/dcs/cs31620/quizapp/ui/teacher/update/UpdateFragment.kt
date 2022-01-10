@@ -63,7 +63,7 @@ class UpdateFragment : Fragment() {
             mUserViewModel.updateAllData(updatedModule,moduleName, args.currentModule.moduleName)
 
             findNavController().popBackStack()
-            Toast.makeText(requireContext(), "Module name update successfully", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Module successfully updated", Toast.LENGTH_SHORT).show()
 
         }else {
             Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show()
