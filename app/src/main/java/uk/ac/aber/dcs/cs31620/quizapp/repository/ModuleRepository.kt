@@ -47,4 +47,8 @@ class ModuleRepository(private val moduleDao: QuizDao) {
         moduleDao.deleteAllData()
     }
 
+    fun deleteModuleQuestionBankAndQuestion(module: Module){
+        moduleDao.deleteModuleQuestionBankAndQuestion(module)
+    }
+
 }

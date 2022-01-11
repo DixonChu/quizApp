@@ -57,5 +57,7 @@
     <string name="module_name">Module Name</string>
     <string name="module_description">Module Description</string>
     <string name="cancel">cancel</string>
+    <string name="random_quiz">Random Quiz</string>
+    <string name="update_question_bank">Update Question Bank</string>
 
 </resources>

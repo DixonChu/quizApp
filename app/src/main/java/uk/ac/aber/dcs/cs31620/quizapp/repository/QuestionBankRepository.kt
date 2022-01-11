@@ -67,4 +67,8 @@ class QuestionBankRepository(private val questionBankDao: QuizDao) {
     fun updateQuestionBankNameWithQuestion(questionBank: QuestionBank, questionBankName:String, currentQuestionBankName: String){
         return questionBankDao.updateQuestionBankNameWithQuestion(questionBank, questionBankName, currentQuestionBankName)
     }
+
+    fun deleteAllQuestionBankAndQuestionByModuleName(moduleName: String){
+        return questionBankDao.deleteAllQuestionBankAndQuestionByModuleName(moduleName)
+    }
 }

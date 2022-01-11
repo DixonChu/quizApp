@@ -47,6 +47,12 @@ class ModuleViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    fun deleteModuleQuestionBankAndQuestion(module: Module){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteModuleQuestionBankAndQuestion(module)
+        }
+    }
+
     fun deleteAllData() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllData()

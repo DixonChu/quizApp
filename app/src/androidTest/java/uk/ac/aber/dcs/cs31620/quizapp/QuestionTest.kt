@@ -3,6 +3,7 @@ package uk.ac.aber.dcs.cs31620.quizapp
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.google.android.apps.common.testing.accessibility.framework.Question
 import junit.framework.Assert
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -51,9 +52,24 @@ class QuestionTest {
 
     // Remove
     @Test
-    fun onDeleteQuestion_checkThat_questionWasDeleted() = runBlocking {
-        quizDao.deleteAllQuestions()
+    fun onDeleteAllQuestionInQuestionBank_checkThat_allQuestionWasDeleted() = runBlocking {
+        val question = testUtil.createQuestion(1, "CS31620","Question Bank Test 1", "What is this?", 1, "This is a question", "answer2", "answer3", "answer4", "answer5", "answer6", "answer7", "answer8", "answer9", "answer10")
+
+        quizDao.addQuestion(question[0])
+        quizDao.deleteQuestionByQuestionBank("Question Bank Test 1")
+
         val foundQuestion = quizDao.readAllQuestions()
+        Assert.assertEquals(0, LiveDataTestUtil.getValue(foundQuestion).size)
+    }
+
+    @Test
+    fun onDeleteQuestion_checkThat_questionWasDeleted(){
+        val question = testUtil.createQuestion(1, "CS31620","Question Bank Test 1", "What is this?", 1, "This is a question", "answer2", "answer3", "answer4", "answer5", "answer6", "answer7", "answer8", "answer9", "answer10")
+
+        quizDao.addQuestion(question[0])
+        quizDao.deleteQuestion(question[0])
+
+        val foundQuestion = quizDao.getQuestionByQuestionBank("Question Bank test 1")
         Assert.assertEquals(0, LiveDataTestUtil.getValue(foundQuestion).size)
     }
 }

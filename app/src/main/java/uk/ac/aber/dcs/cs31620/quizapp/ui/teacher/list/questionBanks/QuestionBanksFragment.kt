@@ -85,7 +85,8 @@ class QuestionBanksFragment : Fragment() {
         if (!binding.questionBankRecyclerView.isEmpty()) {
             val builder = AlertDialog.Builder(requireContext())
             builder.setPositiveButton("Yes") { _, _ ->
-                qbUserViewModel.deleteAllQuestionBankByModuleName(args.module.moduleName)
+//                qbUserViewModel.deleteAllQuestionBankByModuleName(args.module.moduleName)
+                qbUserViewModel.deleteAllQuestionBankAndQuestionByModuleName(args.module.moduleName)
                 Toast.makeText(requireContext(),
                     "Successfully removed everything",
                     Toast.LENGTH_SHORT)

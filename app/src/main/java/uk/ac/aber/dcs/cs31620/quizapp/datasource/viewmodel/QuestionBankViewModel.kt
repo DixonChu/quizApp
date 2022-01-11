@@ -52,6 +52,11 @@ class QuestionBankViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
+    fun deleteAllQuestionBankAndQuestionByModuleName(moduleName: String){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteAllQuestionBankAndQuestionByModuleName(moduleName)
+        }
+    }
 
     fun getQuestionBankWithModuleName(moduleName: String): LiveData<List<QuestionBank>>{
         readAllData = repository.getQuestionBankWithModuleName(moduleName)

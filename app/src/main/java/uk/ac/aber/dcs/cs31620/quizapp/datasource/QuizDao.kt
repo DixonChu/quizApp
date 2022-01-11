@@ -233,6 +233,12 @@ interface QuizDao {
         deleteAllQuestions()
     }
 
+    @Transaction
+    fun deleteModuleQuestionBankAndQuestion(module: Module){
+        deleteModule(module)
+        deleteAllQuestionBankAndQuestionByModuleName(module.moduleName)
+    }
+
     /**
      * Delete Question Bank and question in question bank
      *
@@ -243,6 +249,17 @@ interface QuizDao {
     fun deleteQuestionBankAndQuestion(questionBank: QuestionBank, questionBankName: String) {
         deleteQuestionBank(questionBank)
         deleteQuestionByQuestionBank(questionBankName)
+    }
+
+    /**
+     * Delete all question bank and question by module name
+     *
+     * @param moduleName Module Name
+     */
+    @Transaction
+    fun deleteAllQuestionBankAndQuestionByModuleName(moduleName: String){
+        deleteAllQuestionBanksByModuleName(moduleName)
+        deleteQuestionByModule(moduleName)
     }
 
 

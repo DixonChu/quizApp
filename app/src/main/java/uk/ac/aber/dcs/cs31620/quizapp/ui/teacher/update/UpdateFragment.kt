@@ -89,15 +89,7 @@ class UpdateFragment : Fragment() {
     private fun deleteModule(){
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _, _ ->
-
-            // Delete current module from module database
-            mUserViewModel.deleteModule(args.currentModule)
-
-            // Delete question bank that attached to current module
-            qbUserViewModel.deleteAllQuestionBankByModuleName(args.currentModule.moduleName)
-
-            // Delete question that attached to current module
-            qUserViewModel.deleteQuestionByModuleName(args.currentModule.moduleName)
+            mUserViewModel.deleteModuleQuestionBankAndQuestion(args.currentModule)
 
             Toast.makeText(requireContext(), "Successfully removed: ${args.currentModule.moduleName}", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)

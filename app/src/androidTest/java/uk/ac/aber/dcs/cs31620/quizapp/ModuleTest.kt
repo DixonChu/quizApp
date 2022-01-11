@@ -54,19 +54,25 @@ class ModuleTest {
     // Update
     @Test
     fun onUpdateModule_checkThat_allModuleNameWasUpdated(){
-        val module = testUtil.createModule(1, "CS37420", "Android Development")
+        quizDao.deleteAllData()
+        val module = testUtil.createModule(1, "CS31620", "Android Development")
         val questionBank = testUtil.createQuestionBank(1, "CS31620","Question Bank Test 1", "Question Bank Test 1 Description")
 
+        quizDao.addModule(module[0])
         quizDao.addQuestionBank(questionBank[0])
 
-        quizDao.updateAllData(module[0], "CS37420", "CS31620")
+        val updateModule = Module(0, "CS37420", "E-Commerce")
+        quizDao.updateAllData(updateModule, "CS37420", "CS31620")
+
         val foundQuestionBank = quizDao.readQuestionBankWithModuleName("CS37420")
+        val foundModule = quizDao.readAllModules()
         assertEquals(1, LiveDataTestUtil.getValue(foundQuestionBank).size)
+        assertEquals(1, LiveDataTestUtil.getValue(foundModule).size)
     }
 
     // Remove
     @Test
-    fun onDeleteModule_checkThat_allDataWasDeleted() = runBlocking {
+    fun onDeleteAllModule_checkThat_allDataWasDeleted() = runBlocking {
         quizDao.deleteAllData()
         val foundModule = quizDao.readAllModules()
         val foundQuestionBank = quizDao.readAllQuestionBanks()
