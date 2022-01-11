@@ -21,15 +21,6 @@ class ModuleRepository(private val moduleDao: QuizDao) {
     }
 
     /**
-     * Delete module data
-     *
-     * @param module Module Info
-     */
-    fun deleteModule(module: Module){
-        moduleDao.deleteModule(module)
-    }
-
-    /**
      * Update module data, module name in question bank and question
      *
      * @param module Module Info
@@ -47,6 +38,11 @@ class ModuleRepository(private val moduleDao: QuizDao) {
         moduleDao.deleteAllData()
     }
 
+    /**
+     * Delete module, question bank and question
+     *
+     * @param module Module
+     */
     fun deleteModuleQuestionBankAndQuestion(module: Module){
         moduleDao.deleteModuleQuestionBankAndQuestion(module)
     }

@@ -21,15 +21,6 @@ class QuestionBankRepository(private val questionBankDao: QuizDao) {
     }
 
     /**
-     * Update question bank
-     *
-     * @param questionBank Question Bank Info
-     */
-    fun updateQuestionBank(questionBank: QuestionBank){
-        questionBankDao.updateQuestionBank(questionBank)
-    }
-
-    /**
      * Delete question bank and question
      *
      * @param questionBank Question Bank Info
@@ -37,15 +28,6 @@ class QuestionBankRepository(private val questionBankDao: QuizDao) {
      */
     fun deleteQuestionBankAndQuestion(questionBank: QuestionBank, questionBankName: String){
         questionBankDao.deleteQuestionBankAndQuestion(questionBank, questionBankName)
-    }
-
-    /**
-     * Delete question bank by module name
-     *
-     * @param moduleName Module Name
-     */
-    fun deleteAllQuestionBankByModuleName(moduleName: String){
-        questionBankDao.deleteAllQuestionBanksByModuleName(moduleName)
     }
 
     /**
@@ -68,6 +50,11 @@ class QuestionBankRepository(private val questionBankDao: QuizDao) {
         return questionBankDao.updateQuestionBankNameWithQuestion(questionBank, questionBankName, currentQuestionBankName)
     }
 
+    /**
+     * Delete all question bank and question by module name
+     *
+     * @param moduleName Module Name
+     */
     fun deleteAllQuestionBankAndQuestionByModuleName(moduleName: String){
         return questionBankDao.deleteAllQuestionBankAndQuestionByModuleName(moduleName)
     }

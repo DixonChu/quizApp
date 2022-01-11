@@ -20,37 +20,55 @@ class QuestionViewModel(application: Application) : AndroidViewModel(application
         readAllData = repository.readAllData
     }
 
+    /**
+     * Add question
+     *
+     * @param question Question
+     */
     fun addQuestion(question: Question){
         viewModelScope.launch(Dispatchers.IO){
             repository.addQuestion(question)
         }
     }
 
+    /**
+     * Update question
+     *
+     * @param question Question
+     */
     fun updateQuestion(question: Question){
         viewModelScope.launch(Dispatchers.IO){
             repository.updateQuestion(question)
         }
     }
 
+    /**
+     * Delete question
+     *
+     * @param question Question
+     */
     fun deleteQuestion(question: Question){
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteQuestion(question)
         }
     }
 
-
+    /**
+     * Delete question by question bank name
+     *
+     * @param questionBankName Question Bank Name
+     */
     fun deleteQuestionByQuestionBankName(questionBankName: String){
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteQuestionByQuestionBankName(questionBankName)
         }
     }
 
-    fun deleteQuestionByModuleName(moduleName: String){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.deleteQuestionByModuleName(moduleName)
-        }
-    }
-
+    /**
+     * Get question by question bank name
+     *
+     * @param questionBankName Question Bank Name
+     */
     fun getQuestionByQuestionBankName(questionBankName: String): LiveData<List<Question>>{
         readAllData = repository.getQuestionByQuestionBankName(questionBankName)
         return readAllData

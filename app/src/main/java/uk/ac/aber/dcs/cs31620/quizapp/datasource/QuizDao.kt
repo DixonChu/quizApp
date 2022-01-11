@@ -233,6 +233,11 @@ interface QuizDao {
         deleteAllQuestions()
     }
 
+    /**
+     * Delete current module, question bank and question
+     *
+     * @param module Module Info
+     */
     @Transaction
     fun deleteModuleQuestionBankAndQuestion(module: Module){
         deleteModule(module)

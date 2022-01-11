@@ -48,15 +48,6 @@ class QuestionRepository(private val questionDao: QuizDao) {
     }
 
     /**
-     * Delete question by module name
-     *
-     * @param moduleName Module Name
-     */
-    fun deleteQuestionByModuleName(moduleName: String){
-        questionDao.deleteQuestionByModule(moduleName)
-    }
-
-    /**
      * Get question by question bank name
      *
      * @param questionBankName Question Bank Name

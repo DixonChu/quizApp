@@ -30,7 +30,7 @@ class ModuleViewModel(application: Application) : AndroidViewModel(application) 
 
     /**
      *
-     * Add Module tp
+     * Add Module
      *
      * @param module Module Info
      */
@@ -40,12 +40,6 @@ class ModuleViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-
-    fun deleteModule(module: Module) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteModule(module)
-        }
-    }
 
     fun deleteModuleQuestionBankAndQuestion(module: Module){
         viewModelScope.launch(Dispatchers.IO){
